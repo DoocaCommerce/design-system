@@ -6,7 +6,6 @@ import type { AlertProps } from './types';
 const props = withDefaults(defineProps<AlertProps>(), {
   show: false,
   dismissible: false,
-  center: false,
   variant: 'default',
 });
 const emit = defineEmits(['dismissed']);
@@ -15,7 +14,7 @@ const open = ref(false);
 const iconsByVariant: Record<string, string | null> = {
   default: null,
   success: 'check_circle',
-  danger: 'error',
+  critical: 'error',
   warning: 'warning',
   highlight: 'info',
 };
@@ -48,7 +47,6 @@ watchEffect(() => {
     class="ui-alert"
     :class="{
       '-dismissible': dismissible,
-      '-center': center,
       [`-${variant}`]: true,
     }">
     <Icon v-if="currentIcon" class="ui-alert-icon" filled :name="currentIcon" size="24" />

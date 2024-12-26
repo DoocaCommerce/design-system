@@ -1,3 +1,13 @@
+<script lang="ts">
+/**
+ * ### ButtonDarkmode Component
+ *
+ * @deprecated Este componente está depreciado e será removido em versões futuras.
+ * Por favor, use o componente `Button`.
+ */
+export default {};
+</script>
+
 <script setup lang="ts">
 import ColorSchemeService, { ColorScheme } from '../../../services/ColorSchemeService';
 import { onMounted, ref } from 'vue';

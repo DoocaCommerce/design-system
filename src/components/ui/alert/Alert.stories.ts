@@ -1,6 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 
 import Alert from './Alert.vue';
+import type { AlertVariant } from './types';
+
+const variants: AlertVariant[] = ['default', 'success', 'warning', 'critical', 'highlight'];
 
 const meta = {
   title: 'Ui/Alert',
@@ -11,7 +14,6 @@ const meta = {
     title: 'Alert title',
     label: 'My content',
     icon: '',
-    center: false,
     dismissible: false,
   },
   argTypes: {
@@ -23,7 +25,7 @@ const meta = {
     },
     variant: {
       control: 'radio',
-      options: ['default', 'success', 'warning', 'danger', 'highlight'],
+      options: variants,
     },
   },
   parameters: {
@@ -63,8 +65,8 @@ export const warning: Story = {
   },
 };
 
-export const danger: Story = {
+export const critical: Story = {
   args: {
-    variant: 'danger',
+    variant: 'critical',
   },
 };

@@ -1,21 +1,32 @@
-import type { Size, Variant } from '../../../types';
+import type { Size } from '../../../types';
+
+export type ButtonVariant = 'default' | 'highlight' | 'plain' | 'link' | 'success' | 'critical';
 
 export interface ButtonProps {
-  variant?: Variant;
+  variant?: ButtonVariant;
   label?: string;
+  /** Ícone a esquerda do botão */
   leadingIcon?: string;
+  /** Ícone a direta do botão */
   trailingIcon?: string;
   size?: Size;
   href?: string;
-  flush?: 'left' | 'right';
   block?: boolean;
-  /** @deprecated Essa propriedade está depreciada e será removida em breve. Use o href no lugar ou trate via evento. */
+  /** Propriedade que transforma o botão em um router-link
+   * **Deprecated:** essa propriedade está depreciada e será removida em breve. Use `href`.
+   *
+   * @deprecated Não usar! Use o `href` no lugar ou trate via evento. */
   to?: object;
+  /** Propriedade que adiciona uma borda específica ao spinner quando o botão está em
+   * estado de loading
+   * **Deprecated:** essa propriedade está depreciada e será removida em breve.
+   *
+   * @deprecated Não usar! */
   spinnerBorder?: number | string;
   type?: string;
   loading?: boolean;
-  outline?: boolean;
-  disclosure?: boolean;
   target?: '_blank' | '_self';
   disabled?: boolean;
+  /** Habilita o botão com apenas o ícone, ocultando a label do mesmo */
+  onlyIcon?: boolean;
 }
