@@ -9,7 +9,7 @@ withDefaults(defineProps<FeedbackMessageProps>(), {
     size: 48,
   }),
   button: () => ({
-    variant: 'default',
+    variant: 'highlight',
   }),
 });
 const emit = defineEmits<FeedbackMessageEmits>();
@@ -48,10 +48,7 @@ const onAction = () => emit('action');
       :size="button?.size"
       :href="button?.href"
       :target="button?.target"
-      :outline="button?.outline"
       :block="button?.block"
-      :flush="button?.flush"
-      :disclosure="button?.disclosure"
       @click="onAction" />
   </section>
 </template>
