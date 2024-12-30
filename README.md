@@ -1,4 +1,4 @@
-<p align="center">  
+<p align="center">
   <img src="public/icon.svg" width="100"/>
   <h1 align="center">
     Design System
@@ -75,7 +75,28 @@ Caso esteja trabalhando em alguma funcionalidade para o Design System e queira t
 3. Acesse a pasta do outro projeto que deseja usar o Design System;
 4. Execute `npm link @tray-tecnologia/design-system` para usar a cópia do Design System loca no projeto;
 
-Nesse modo, qualquer alteração realizada na pasta local do Design System deve refletir automaticamente no outro projeo.
+Nesse modo, qualquer alteração realizada na pasta local do Design System deve refletir automaticamente no outro projeto.
+
+
+#### Componentes Depreciados que serão removidos em breve
+
+- TableList
+- ButtonDarkMode
+- Breadcrumb
+- CardAnnotation
+- FrameAnnotation
+- CalloutCard
+- FormHelper
+- ListGroup
+- ProgressIndeterminate
+- Topbar
+- StatsItem
+- StatsGroup
+- IconButton
+- ButtonAction
+
+Recomendamos não utilizar esses componentes em novos projetos, pois serão removidos em breve.
+
 
 #### Documentação
 
