@@ -91,7 +91,6 @@ export const completeIndexTableProps: IndexTableProps<ItemInTable> = {
       label: 'Preço',
     },
   ],
-  loadingText: '',
   headClass: {},
   cellClass: {},
 };
