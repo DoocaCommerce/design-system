@@ -45,6 +45,7 @@ const onAction = () => emit('action');
       :trailing-icon="button?.trailingIcon"
       :loading="button?.loading"
       :disabled="button?.disabled"
+      :only-icon="button?.onlyIcon"
       :size="button?.size"
       :href="button?.href"
       :target="button?.target"
