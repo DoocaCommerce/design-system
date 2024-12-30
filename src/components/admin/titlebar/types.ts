@@ -1,13 +1,13 @@
-import type { IAction } from '../../../types';
+import type { ActionButton } from '#ds/types/Action.js';
 
 export interface TitlebarProps {
   title?: string | null;
   to?: Record<string, any>;
   backlink?: { to: string };
-  primaryAction?: IAction;
-  secondaryActions?: IAction[];
+  primaryAction?: ActionButton;
+  secondaryActions?: ActionButton[];
   groupActions?: {
     name: string;
-    actions: IAction[];
+    actions: ActionButton[];
   };
 }
