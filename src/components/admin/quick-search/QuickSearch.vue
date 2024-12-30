@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, withDefaults } from 'vue';
+import { computed, onMounted, ref, withDefaults } from 'vue';
 import Modal from '../../ui/modal/Modal.vue';
 import FormLayoutItem from '../../ui/form-layout/FormLayoutItem.vue';
 import FormTextfield from '../../ui/form-textfield/FormTextfield.vue';
@@ -28,7 +28,11 @@ const isVisible = computed({
 
 const formValues = ref<IQuickSearchFormValue>({
   searchKey: '',
-  searchType: props.searchOptions[0].value,
+  searchType: '',
+});
+
+onMounted(() => {
+  formValues.value = { searchKey: '', searchType: props.searchOptions[0].value };
 });
 
 function resetSearchValues() {
@@ -47,20 +51,22 @@ function onChange(value: string) {
   emit('onChangeOption', value);
 }
 </script>
+
 <template>
-  <Modal class="modal-container" v-model="isVisible" :title="title" :caption="caption">
-    <form v-on:submit.prevent="onSubmit">
+  <Modal v-model="isVisible" class="modal-container" :title="title" :caption="caption">
+    <form @submit.prevent="onSubmit">
       <Stack class="form" style="gap: 8px">
         <FormLayoutItem>
           <FormSelect v-model="formValues.searchType" :options="searchOptions" name="searchType" @update="onChange" />
         </FormLayoutItem>
         <FormTextfield v-model="formValues.searchKey" name="searchKey" :placeholder="placeholder" autofocus />
-        <Button leadingIcon="search" type="submit" :block="isMobile" variant="primary">{{ buttonLabel }}</Button>
+        <Button leading-icon="search" type="submit" :block="isMobile" variant="highlight">{{ buttonLabel }}</Button>
       </Stack>
       <slot />
     </form>
   </Modal>
 </template>
+
 <style lang="scss">
 @import './QuickSearch.scss';
 </style>

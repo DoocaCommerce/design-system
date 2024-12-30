@@ -1,6 +1,6 @@
 <script lang="ts">
 /**
- * ### Breadcrumb Component
+ * **Deprecated:** esse componente está depreciado e será removido em breve.
  *
  * @deprecated Este componente está depreciado e será removido em versões futuras.
  */

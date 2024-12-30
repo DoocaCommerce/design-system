@@ -111,9 +111,9 @@ watchEffect(() => {
         type="tel"
         :value="modelValue"
         :readonly="!inputable"
+        :placeholder="placeholder"
         @blur="updateInput"
-        @focus="inputFocus"
-        :placeholder="placeholder" />
+        @focus="inputFocus" />
     </div>
     <Button
       tabindex="-1"

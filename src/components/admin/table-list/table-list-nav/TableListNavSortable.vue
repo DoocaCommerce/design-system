@@ -56,20 +56,20 @@ onMounted(() => {
 </script>
 
 <template>
-  <span class="table-list-nav-item" v-show="sortableFinal.length">
+  <span v-show="sortableFinal.length" class="table-list-nav-item">
     <Dropdown ref="dropdownRef">
       <template #button-content>
         <span class="table-list-nav-btn">
-          <Button :label="isMobile() ? '' : 'Ordenar'" :size="isMobile() ? 'md' : 'sm'" leadingIcon="swap_vert" />
+          <Button :label="isMobile() ? '' : 'Ordenar'" :size="isMobile() ? 'md' : 'sm'" leading-icon="swap_vert" />
         </span>
       </template>
       <DropdownItemButton
         v-for="item in sortableFinal"
-        data-close="true"
         :key="item.sort"
-        @click="onSortBy(item)"
-        :active="queryParams.sort == item.sort">
-        <FormRadio v-model="queryParams.sort" :value="item.sort" :label="item.name" noEvents />
+        data-close="true"
+        :active="queryParams.sort == item.sort"
+        @click="onSortBy(item)">
+        <FormRadio v-model="queryParams.sort" :value="item.sort" :label="item.name" no-events />
       </DropdownItemButton>
     </Dropdown>
   </span>

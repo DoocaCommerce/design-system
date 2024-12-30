@@ -1,4 +1,4 @@
-import type { Variant } from '../../../types';
+import type { ButtonVariant } from '../button/types';
 
 export interface DialogConfig {
   id?: string;
@@ -13,7 +13,7 @@ export interface DialogConfig {
   promptPlaceholder?: string;
   cancelLabel?: string;
   destructLabel?: string;
-  destructVariant?: Variant;
+  destructVariant?: ButtonVariant;
   destructIcon?: string;
   type?: 'prompt' | 'confirm';
   opened?: boolean;

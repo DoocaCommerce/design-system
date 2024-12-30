@@ -222,12 +222,12 @@ defineExpose({ onClickSearch });
 
 <template>
   <div class="ui-browser-select">
-    <div class="ui-browser-select-button" v-if="selectType == 'btn' && !hideBtn">
+    <div v-if="selectType == 'btn' && !hideBtn" class="ui-browser-select-button">
       <slot name="button">
         <div
           class="area-select"
-          @click="onClickSearch"
-          :class="{ disabled: Number(limit) > 0 && rows.length == limit }">
+          :class="{ disabled: Number(limit) > 0 && rows.length == limit }"
+          @click="onClickSearch">
           <span>{{ placeholder }}</span>
         </div>
       </slot>
@@ -237,19 +237,19 @@ defineExpose({ onClickSearch });
         <FormTextfield
           v-model="term"
           placeholder="Procurar..."
-          @keyup="onChangeTerm"
           autocomplete="off"
-          :disabled="searchDisabled" />
-        <Button variant="primary" @click="onClickSearch" :disabled="searchDisabled">Pesquisar</Button>
+          :disabled="searchDisabled"
+          @keyup="onChangeTerm" />
+        <Button variant="highlight" :disabled="searchDisabled" @click="onClickSearch">Pesquisar</Button>
       </div>
 
-      <div class="ui-browser-list" v-if="!hideList && rows.length">
+      <div v-if="!hideList && rows.length" class="ui-browser-list">
         <div
           v-for="item in rows.slice(0, paginateLimit)"
+          :key="item[identifier]"
           class="ui-browser-list-row"
-          :class="{ '-no-button': hideExcludeButton }"
-          :key="item[identifier]">
-          <component v-if="templateCustom" :is="templateCustom" :item="item" />
+          :class="{ '-no-button': hideExcludeButton }">
+          <component :is="templateCustom" v-if="templateCustom" :item="item" />
           <div v-else class="browser-list-cell">
             {{ item.name }}
           </div>
@@ -258,7 +258,7 @@ defineExpose({ onClickSearch });
           </div>
         </div>
         <div v-if="rows.length > paginateLimit" class="ui-browser-list-more">
-          <Link @click="nextPage" label="Exibir mais" />
+          <Link label="Exibir mais" @click="nextPage" />
         </div>
       </div>
     </div>
@@ -266,14 +266,14 @@ defineExpose({ onClickSearch });
 
   <BrowserSelectModal
     ref="browserSelectModalRef"
-    @update="updateByModal"
-    :templateCustom="templateCustom"
+    :template-custom="templateCustom"
     :service="service"
-    :searchBy="searchBy"
-    :selectOne="selectOne"
+    :search-by="searchBy"
+    :select-one="selectOne"
     :identifier="identifier"
     :limit="limit"
-    :title="title" />
+    :title="title"
+    @update="updateByModal" />
 </template>
 
 <style lang="scss">

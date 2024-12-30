@@ -55,7 +55,7 @@ watchEffect(() => {
 <template>
   <div v-if="modelValue != null" class="ui-form-validation">
     <Alert
-      variant="danger"
+      variant="critical"
       :show="Boolean(modelValue)"
       :title="title"
       :dismissible="!noDismissible"

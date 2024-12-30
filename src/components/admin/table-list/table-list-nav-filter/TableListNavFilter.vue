@@ -34,17 +34,17 @@ defineExpose({
 </script>
 
 <template>
-  <span class="table-list-nav-item" v-if="props.state.config.filters">
+  <span v-if="props.state.config.filters" class="table-list-nav-item">
     <Button
       :size="isMobile() ? 'md' : 'sm'"
       :label="isMobile() ? '' : 'Filtros'"
-      leadingIcon="filter_list"
-      @click="filterSidebarRef.open()"
-      class="table-list-nav-btn" />
+      leading-icon="filter_list"
+      class="table-list-nav-btn"
+      @click="filterSidebarRef.open()" />
     <TableListNavFilterSidebar
       ref="filterSidebarRef"
-      @close="closeFilter"
       :filters="props.state.config.filters"
-      :currentFilters="state.omitFilters" />
+      :current-filters="state.omitFilters"
+      @close="closeFilter" />
   </span>
 </template>

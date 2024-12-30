@@ -28,10 +28,10 @@ const props = withDefaults(defineProps<BrowserSelectProps>(), {
   limit: 0,
 });
 
-const TIMER_INSTANT_SEARCH = 500;
+const timerInstantSearch = 500;
 const term = ref<string>();
 const params = ref({ q: null, page: 1 });
-const InfiniteScrollRef = ref();
+const infiniteScrollRef = ref();
 const rows = ref<TypeItem[]>([]);
 const ids = ref();
 const fetching = ref(true);
@@ -109,8 +109,8 @@ watch(
         page: 1,
       });
       rows.value = [];
-      InfiniteScrollRef.value.reset();
-    }, TIMER_INSTANT_SEARCH);
+      infiniteScrollRef.value.reset();
+    }, timerInstantSearch);
   }
 );
 
@@ -140,21 +140,26 @@ defineExpose({
 </script>
 
 <template>
-  <Aside v-model="aside" :title="title" scrollable noCloseOnBackdrop scrollable-content-id="browser-select-scrollable">
+  <Aside
+    v-model="aside"
+    :title="title"
+    scrollable
+    no-close-on-backdrop
+    scrollable-content-id="browser-select-scrollable">
     <div class="ui-browser">
       <div class="ui-browser-search">
-        <Row alignV="center">
+        <Row align-v="center">
           <Col>
             <div class="ui-browser-search-input">
               <FormTextfield v-model="term" placeholder="Procurar" autofocus last size="md" autocomplete="off">
                 <template #before>
                   <div class="box-icon">
-                    <Spinner class="icon" size="16" border="2" v-show="typing" variant="primary" />
-                    <Icon class="icon" name="search" v-show="!typing" size="20" />
+                    <Spinner v-show="typing" class="icon" size="16" border="2" variant="primary" />
+                    <Icon v-show="!typing" class="icon" name="search" size="20" />
                   </div>
                 </template>
                 <template #after>
-                  <Icon name="close" @click="onEmptyTerm" v-show="term" />
+                  <Icon v-show="term" name="close" @click="onEmptyTerm" />
                 </template>
               </FormTextfield>
             </div>
@@ -167,22 +172,22 @@ defineExpose({
           v-for="item in rows"
           :key="String(item[identifier])"
           :class="{ disabled: limit >= 1 && limit == ids.length && !ids.includes(item[identifier]) }"
+          class="ui-browser-list-row"
           :tabindex="0"
           @click.stop="onCheckOne(item, $event)"
           @keyup.enter="onCheckOne(item, $event)"
-          @keypress.space="onCheckOne(item, $event)"
-          class="ui-browser-list-row">
+          @keypress.space="onCheckOne(item, $event)">
           <div class="ui-browser-list-cell">
-            <FormCheckbox :value="item[identifier]" v-model="ids" />
+            <FormCheckbox v-model="ids" :value="item[identifier]" />
           </div>
           <component :is="getTemplate()" :item="item" modal />
         </div>
-        <InfiniteScroll :load="load" ref="InfiniteScrollRef" scrollable-element-id="browser-select-scrollable" />
+        <InfiniteScroll ref="infiniteScrollRef" :load="load" scrollable-element-id="browser-select-scrollable" />
       </div>
     </div>
 
     <template #footer>
-      <Button variant="primary" @click="apply">
+      <Button variant="highlight" @click="apply">
         Aplicar ({{ ids.length < 10 ? zerofill(ids.length) : ids.length || 0 }}
         {{ ids.length == 1 ? 'selecionado' : 'selecionados' }})
       </Button>

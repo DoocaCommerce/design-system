@@ -37,17 +37,17 @@ const mediaCardClasses = computed(() => {
     </div>
     <Card :title="title" :style="customMediaStyle">
       <div class="ui-media-card-info">
-        <p class="ui-media-card-info-text" v-html="text" />
+        <p v-html="text" class="ui-media-card-info-text" />
         <div class="ui-media-card-info-buttons">
           <Button
             v-for="button in buttons"
             :key="button.label"
-            @click="button.onAction"
             :href="button.to"
             :target="button.target"
             :size="button.size || 'sm'"
             :label="button.label"
-            :variant="button.variant" />
+            :variant="button.variant"
+            @click="button.onAction" />
         </div>
       </div>
     </Card>
