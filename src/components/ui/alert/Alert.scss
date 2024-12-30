@@ -1,4 +1,5 @@
 @import '../../../scss/mixins.scss';
+
 .ui-alert {
   text-align: left;
   position: relative;
@@ -35,7 +36,7 @@
     }
   }
 
-  &.-danger {
+  &.-critical {
     background-color: var(--s-color-fill-critical-light);
     border-color: var(--s-color-border-critical);
     color: var(--s-color-content-critical);

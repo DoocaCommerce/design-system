@@ -19,7 +19,7 @@ const meta = {
   argTypes: {
     icon: {
       control: 'radio',
-      options: [null, 'warning', 'error', 'check_circle'],
+      options: [null, 'info', 'warning', 'error', 'check_circle'],
       description:
         'Todos os ícones disponíveis são os de estilo `Outlined` encontrados em [Material Symbols](https://fonts.google.com/icons).',
     },
@@ -69,4 +69,23 @@ export const critical: Story = {
   args: {
     variant: 'critical',
   },
+};
+
+export const withContentInTheSlot: Story = {
+  args: {
+    variant: 'highlight',
+    label: '',
+  },
+  render: (args) => ({
+    components: { Alert },
+    setup() {
+      return { args };
+    },
+    template: /* html */ `
+        <Alert v-bind="args">
+          Com conteúdo personalizável 🐾 <br>
+          Por meio do slot <b>padrão</b>
+        </Alert>
+      `,
+  }),
 };

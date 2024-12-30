@@ -6,5 +6,6 @@ export interface AlertProps {
   icon?: string | null;
   dismissible?: boolean;
   show?: boolean;
+  /** Texto para o conteúdo do alerta, que é opcional, porém quando não passado como prop deve ser usado o slot padrão do componente para definir o texto do mesmo. */
   label?: string;
 }
