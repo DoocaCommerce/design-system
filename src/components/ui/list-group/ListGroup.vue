@@ -1,3 +1,12 @@
+<script lang="ts">
+/**
+ * **Deprecated:** este componente está depreciado e será removido em breve.
+ *
+ * @deprecated Este componente está depreciado e será removido em versões futuras.
+ */
+export default {};
+</script>
+
 <script setup lang="ts" />
 
 <template>

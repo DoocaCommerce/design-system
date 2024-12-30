@@ -1,3 +1,12 @@
+<script lang="ts">
+/**
+ * **Deprecated:** este componente está depreciado e será removido em breve.
+ *
+ * @deprecated Este componente está depreciado e será removido em versões futuras.
+ */
+export default {};
+</script>
+
 <script setup lang="ts">
 import { inject } from 'vue';
 import Breadcrumb from '../../ui/breadcrumb/UiBreadcrumb.vue';
@@ -28,7 +37,7 @@ const changeSchemeColor = () => emit('changeSchemeColor');
 </script>
 
 <template>
-  <div class="ui-topbar" id="ui-topbar">
+  <div id="ui-topbar" class="ui-topbar">
     <div class="ui-topbar-wrapper">
       <div class="ui-topbar-content">
         <div class="ui-topbar-mobile">
@@ -38,14 +47,14 @@ const changeSchemeColor = () => emit('changeSchemeColor');
           <slot name="logo-mobile" />
         </div>
         <Breadcrumb>
-          <BreadcrumbItem :to="{ name: backlink.to }" class="btn-back" v-if="backlink">
+          <BreadcrumbItem v-if="backlink" :to="{ name: backlink.to }" class="btn-back">
             <Icon name="arrow_back" />
             <span>voltar</span>
           </BreadcrumbItem>
           <BreadcrumbItem :to="{ name: 'home' }">
             <span>Início</span>
           </BreadcrumbItem>
-          <BreadcrumbItem v-for="item in breadcrumb" :to="{ name: item.to }" :key="item.name">
+          <BreadcrumbItem v-for="item in breadcrumb" :key="item.name" :to="{ name: item.to }">
             <span>{{ item.name }}</span>
           </BreadcrumbItem>
         </Breadcrumb>

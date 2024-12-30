@@ -1,3 +1,10 @@
+<script lang="ts">
+/**
+ * @deprecated Este componente está depreciado e será removido em versões futuras.
+ */
+export default {};
+</script>
+
 <script setup lang="ts">
 import StatsItem from '../../ui/stats-item/StatsItem.vue';
 import type { StatsGroupProps } from './types';

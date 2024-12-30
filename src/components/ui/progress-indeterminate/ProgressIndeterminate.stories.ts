@@ -2,13 +2,13 @@ import type { Meta, StoryObj } from '@storybook/vue3';
 
 import ProgressIndeterminate from './ProgressIndeterminate.vue';
 
-const meta = {
-  title: 'Ui/Progress Indeterminate',
+const meta: Meta<typeof ProgressIndeterminate> = {
+  title: 'Ui/⛔ Progress Indeterminate',
   component: ProgressIndeterminate,
   tags: ['autodocs'],
   args: {},
   argTypes: {},
-} satisfies Meta<typeof ProgressIndeterminate>;
+};
 
 type Story = StoryObj<typeof meta>;
 

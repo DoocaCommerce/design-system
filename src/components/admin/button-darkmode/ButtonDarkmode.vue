@@ -1,7 +1,5 @@
 <script lang="ts">
 /**
- * ### ButtonDarkmode Component
- *
  * @deprecated Este componente está depreciado e será removido em versões futuras.
  * Por favor, use o componente `Button`.
  */

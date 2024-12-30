@@ -2,9 +2,13 @@ import type { Meta, StoryObj } from '@storybook/vue3';
 
 import StatsItem from './StatsItem.vue';
 
-/** Base component used for the Stats Group. */
+/**
+ * Base component used for the Stats Group.
+ *
+ * **Deprecated:** este componente está depreciado e será removido em breve.
+ */
 const meta = {
-  title: 'Ui/Stats Item',
+  title: 'Ui/⛔ Stats Item',
   component: StatsItem,
   tags: ['autodocs'],
   args: {
