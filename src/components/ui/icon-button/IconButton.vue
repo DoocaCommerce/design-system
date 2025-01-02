@@ -1,3 +1,10 @@
+<script lang="ts">
+/**
+ * @deprecated Este componente está depreciado e será removido em versões futuras. Use o Button com a propriedade `only-icon` no lugar.
+ */
+export default {};
+</script>
+
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 import Icon from '../icon/Icon.vue';

@@ -4,8 +4,8 @@ import IconButton from '../../ui/icon-button/IconButton.vue';
 import Dropdown from '../../ui/dropdown/Dropdown.vue';
 import DropdownItemButton from '../../ui/dropdown/DropdownItemButton.vue';
 import Button from '../../ui/button/Button.vue';
-import type { Variant } from '../../../types';
 import type { TitlebarProps } from './types';
+import type { ButtonVariant } from '#ds/components/ui/button/types';
 
 const props = defineProps<TitlebarProps>();
 
@@ -17,7 +17,7 @@ const getButtonLabel = computed(
   () => (label?: string, leadingIcon?: string) => (isDesktop.value || !leadingIcon ? label : undefined)
 );
 
-const variantBtn = computed<Variant>(() => props.primaryAction?.variant || 'primary');
+const variantBtn = computed<ButtonVariant>(() => props.primaryAction?.variant || 'highlight');
 
 onMounted(() => {
   window.onresize = () => {
@@ -57,16 +57,16 @@ onUnmounted(() => {
           <template #button-content>
             <Button
               :label="getButtonLabel('Mais ações', moreBtnMobileIcon)"
-              :trailingIcon="isDesktop ? 'expand_more' : moreBtnMobileIcon"
+              :trailing-icon="isDesktop ? 'expand_more' : moreBtnMobileIcon"
               :size="isDesktop ? 'md' : 'lg'" />
           </template>
           <DropdownItemButton
             v-for="(item, index) in secondaryActions"
             :key="index"
             :label="item.label"
-            @click="item.onAction"
             :leading-icon="item.leadingIcon"
-            :class="item.class" />
+            :class="item.class"
+            @click="item.onAction" />
         </Dropdown>
       </div>
       <div v-if="primaryAction" class="titlebar-actions-primary">
@@ -74,10 +74,10 @@ onUnmounted(() => {
           :variant="variantBtn"
           :to="primaryAction.to"
           :label="getButtonLabel(primaryAction.label, primaryAction.leadingIcon)"
-          @click="primaryAction.onAction"
           :class="primaryAction.class"
           :leading-icon="primaryAction.leadingIcon"
-          :size="isDesktop ? 'md' : 'lg'" />
+          :size="isDesktop ? 'md' : 'lg'"
+          @click="primaryAction.onAction" />
       </div>
     </div>
   </div>

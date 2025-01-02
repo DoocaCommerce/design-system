@@ -1,3 +1,10 @@
+<script lang="ts">
+/**
+ * @deprecated Este componente está depreciado e será removido em versões futuras.
+ */
+export default {};
+</script>
+
 <script setup lang="ts">
 import { useSlots } from 'vue';
 import type { CardAnnotationProps } from './types';

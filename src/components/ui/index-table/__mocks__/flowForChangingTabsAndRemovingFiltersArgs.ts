@@ -99,6 +99,7 @@ export const flowForChangingTabsAndRemovingFiltersIndexTableProps: IndexTablePro
     },
   ],
   activeFilterTags: [],
+  loadingText: 'Carregando produtos',
 };
 
 export const wrapperToChangeTab = (key: string, args: IndexTableProps<ItemInTable>) => {

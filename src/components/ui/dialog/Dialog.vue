@@ -8,7 +8,7 @@ const props = withDefaults(defineProps<DialogProps>(), {
   promptType: 'text',
   cancelLabel: 'Cancelar',
   destructLabel: 'Deletar',
-  destructVariant: 'danger',
+  destructVariant: 'critical',
 });
 
 const emit = defineEmits(['close', 'callback']);
@@ -103,38 +103,38 @@ defineExpose({
 </script>
 
 <template>
-  <div v-if="state.showing" class="ui-dialog -show" :class="classList" tabindex="0" ref="dialogRef">
+  <div v-if="state.showing" ref="dialogRef" class="ui-dialog -show" :class="classList" tabindex="0">
     <div class="ui-dialog-wrapper" :style="style">
       <div class="ui-dialog-overlay" @click="onClickBackdrop"></div>
       <form class="ui-dialog-content" @submit.prevent="onConfirm" ref="form">
-        <div class="ui-dialog-header" v-if="title">
+        <div v-if="title" class="ui-dialog-header">
           <h4 class="title" v-html="title" />
         </div>
         <div class="ui-dialog-body">
           <slot />
-          <div v-html="message" class="ui-dialog-message" />
-          <div class="ui-dialog-prompt mt-5" v-if="isPrompt">
+          <div class="ui-dialog-message" v-html="message" />
+          <div v-if="isPrompt" class="ui-dialog-prompt mt-5">
             <FormTextfield
+              id="prompt"
+              v-model="prompt"
               :label="promptLabel"
               :placeholder="promptPlaceholder"
               :type="promptType"
-              v-model="prompt"
               size="sm"
-              id="prompt"
               required
               last />
           </div>
         </div>
-        <div class="ui-dialog-footer" v-if="!hideFooter">
+        <div v-if="!hideFooter" class="ui-dialog-footer">
           <Button
-            :leadingIcon="config.destructIcon"
+            :leading-icon="config.destructIcon"
             :variant="destructVariant"
             type="submit"
             class="btn-destruct"
             tabindex="0">
             {{ config.destructLabel }}
           </Button>
-          <Button v-if="type != 'confirm' && !hideCancel" @click="() => close(false)" class="ui-dialog-btn-cancel">
+          <Button v-if="type != 'confirm' && !hideCancel" class="ui-dialog-btn-cancel" @click="() => close(false)">
             {{ cancelLabel }}
           </Button>
         </div>

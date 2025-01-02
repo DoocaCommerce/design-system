@@ -1,4 +1,4 @@
-import type { IAction } from '../../../types';
+import type { Action } from '../../../types';
 
 export interface FormTagsProps {
   modelValue?: any;
@@ -6,7 +6,7 @@ export interface FormTagsProps {
   label?: string;
   closeOnSelect?: boolean;
   last?: boolean;
-  actions?: IAction[];
+  actions?: Action[];
   options?: any;
   create?: boolean;
   variant?: string;

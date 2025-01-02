@@ -26,7 +26,7 @@ function onSavePost(): void {
       <form action="" @submit.prevent="onSavePost" autocomplete="off">
         <Stack spacing="sm">
           <FormTextfield required v-model="note" placeholder="Escreva um comentário..." />
-          <Button variant="primary" type="submit" label="Postar" />
+          <Button variant="highlight" type="submit" label="Postar" />
         </Stack>
       </form>
     </div>

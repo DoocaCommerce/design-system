@@ -152,7 +152,7 @@ onMounted(() => {
         :disabled="disabled" />
       <select v-else multiple ref="selectRef" :id="uid" autocomplete="off" />
       <div v-if="actions" class="ui-form-tags-actions">
-        <Button v-for="item in actions" :label="item.label" @click="item.onAction" />
+        <Button v-for="(item, index) in actions" :key="index" :label="item.label" @click="item.onAction" />
       </div>
     </div>
   </div>

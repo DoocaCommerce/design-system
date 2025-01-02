@@ -6,47 +6,51 @@ import type { ButtonProps } from './types';
 
 const props = withDefaults(defineProps<ButtonProps>(), {
   spinnerBorder: 2,
+  variant: 'default',
   type: 'button',
   size: 'md',
+  loading: false,
+  disabled: false,
+  onlyIcon: false,
 });
 
 const componentType = computed(() => {
   if (props.to) return 'router-link';
+
   if (props.href) return 'a';
+
   return 'BUTTON';
 });
-
-const classList = computed(() => [
-  props.size ? `-${props.size}` : '',
-  props.variant ? `-${props.variant}` : '-default',
-  props.leadingIcon ? '-icon' : '',
-  props.flush ? `-flush-${props.flush}` : '',
-  props.block ? '-block' : '',
-  props.outline ? '-outline' : '',
-  props.disclosure ? '-disclosure' : '',
-  (props.trailingIcon || props.leadingIcon) && !props.label ? '-only-icon' : '',
-]);
-
-const trailingIcon = computed(() => (props.disclosure ? 'arrow_drop_down' : props.trailingIcon));
 </script>
 
 <template>
   <component
-    class="ui-button"
     :is="componentType"
+    class="ui-button"
     :type="type"
-    :class="[classList, { '-loading': loading, '-disabled': disabled }]"
+    :class="{
+      '-loading': loading,
+      '-disabled': disabled,
+      '-block': block,
+      '-icon': leadingIcon,
+      '-only-icon': ((trailingIcon || leadingIcon) && !label) || onlyIcon,
+      [`-${variant}`]: variant,
+      [`-${size}`]: size,
+    }"
     :disabled="disabled"
     :to="to"
     :href="href"
     :target="target">
     <div class="ui-button-content">
-      <Icon :name="leadingIcon" v-if="leadingIcon" />
+      <Icon v-if="leadingIcon" :name="leadingIcon" />
+
       <Spinner v-if="loading" :size="16" :border="spinnerBorder" />
-      <div v-if="label || $slots.default" class="ui-button-label">
+
+      <div v-if="(label || $slots.default) && !onlyIcon" class="ui-button-label">
         <slot>{{ label }}</slot>
       </div>
-      <Icon :name="trailingIcon" v-if="trailingIcon" />
+
+      <Icon v-if="trailingIcon" :name="trailingIcon" />
     </div>
   </component>
 </template>

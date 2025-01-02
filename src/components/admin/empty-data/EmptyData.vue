@@ -9,7 +9,7 @@ defineProps<EmptyDataProps>();
 <template>
   <div class="ui-empty-data" :class="{ 'ui-empty-data-link': link, '-border': !noBorder }">
     <div class="ui-empty-data-content">
-      <Icon v-if="icon" :name="icon" :type="iconType" v-show="icon" class="ui-empty-data-icon" size="24" />
+      <Icon v-if="icon" v-show="icon" :name="icon" :type="iconType" class="ui-empty-data-icon" size="24" />
       <p class="ui-empty-data-text">
         <slot>{{ label }}</slot>
       </p>
@@ -18,7 +18,7 @@ defineProps<EmptyDataProps>();
       <slot name="caption">{{ caption }}</slot>
     </div>
     <div v-if="actions" class="ui-empty-data-actions">
-      <Button v-for="item in actions" size="sm" :label="item.label" @click="item.onAction" />
+      <Button v-for="(item, index) in actions" :key="index" size="sm" :label="item.label" @click="item.onAction" />
     </div>
   </div>
 </template>

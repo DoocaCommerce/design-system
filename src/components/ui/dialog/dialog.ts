@@ -29,14 +29,14 @@ export const Dialog = {
   delete(config: DialogConfig = {}) {
     config.destructLabel = 'Deletar';
     config.destructIcon = 'delete';
-    config.destructVariant = 'danger';
+    config.destructVariant = 'critical';
     open(config);
   },
   prompt(config = {}) {
     config = {
       ...{
         type: 'prompt',
-        destructVariant: 'danger',
+        destructVariant: 'critical',
         destructLabel: 'Confirmar',
       },
       ...config,

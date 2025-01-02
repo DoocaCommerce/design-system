@@ -1,9 +1,9 @@
-import type { IAction } from '../../../types';
+import type { ActionButton } from '#ds/types/Action.js';
 
 export interface CalloutCardProps {
   title?: string;
   icon?: string;
-  primaryAction?: IAction;
+  primaryAction?: ActionButton;
   justifyCardActions?: string;
   bgColorIconPrimary?: boolean;
 }

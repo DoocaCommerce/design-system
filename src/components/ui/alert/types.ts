@@ -1,4 +1,4 @@
-export type AlertVariant = 'success' | 'danger' | 'default' | 'warning' | 'highlight';
+export type AlertVariant = 'success' | 'critical' | 'default' | 'warning' | 'highlight';
 
 export interface AlertProps {
   title?: string;
@@ -6,6 +6,6 @@ export interface AlertProps {
   icon?: string | null;
   dismissible?: boolean;
   show?: boolean;
-  center?: boolean;
+  /** Texto para o conteúdo do alerta, que é opcional, porém quando não passado como prop deve ser usado o slot padrão do componente para definir o texto do mesmo. */
   label?: string;
 }

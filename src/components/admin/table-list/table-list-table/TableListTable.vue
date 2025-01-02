@@ -46,7 +46,6 @@ const onCheckOne = (e: MouseEvent, item: any) => {
     </div>
     <component
       v-for="(item, key) in rows"
-      @click="onClickRow($event, item)"
       class="table-list-row"
       :is="to ? 'router-link' : 'div'"
       :to="{ name: to, params: { id: item.id } }"
@@ -54,7 +53,8 @@ const onCheckOne = (e: MouseEvent, item: any) => {
       :class="{
         '-selected': selected.includes(item.id),
         '-inactive': item.active == false,
-      }">
+      }"
+      @click="onClickRow($event, item)">
       <TableListItem v-if="!state.config.hideCheckbox" @click.stop.prevent="onCheckOne($event, item)" auto>
         <FormCheckbox :modelValue="selected" :value="item.id" noEvents />
       </TableListItem>
@@ -64,8 +64,8 @@ const onCheckOne = (e: MouseEvent, item: any) => {
       <TableListItem v-if="state.config.actions?.length" auto>
         <Button
           v-if="state.config.actions && state.config.actions.includes('active')"
-          @click.stop.prevent="onActiveOne(item)"
-          variant="plain">
+          variant="plain"
+          @click.stop.prevent="onActiveOne(item)">
           <TextStyle v-if="item.active" variant="success" label="Ativo" />
           <TextStyle v-else variant="danger" label="Inativo" />
         </Button>

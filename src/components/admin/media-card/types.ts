@@ -1,4 +1,4 @@
-import type { IAction } from '../../../types';
+import type { ActionButton } from '#ds/types';
 
 export interface MediaCardProps {
   title: string;
@@ -8,7 +8,7 @@ export interface MediaCardProps {
   imageHref?: string;
   imageTarget?: '_blank' | '_self';
   inverse?: boolean;
-  buttons?: IAction[];
+  buttons?: ActionButton[];
   vertical?: boolean;
   maxMediaHeight?: number;
 }

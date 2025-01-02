@@ -1,4 +1,4 @@
-import type { IAction } from '../../../types';
+import type { Action } from '../../../types';
 
 export interface CardProps {
   title?: string | null;
@@ -17,10 +17,10 @@ export interface CardProps {
   loading?: boolean;
   transparent?: boolean;
   plain?: boolean;
-  actions?: IAction[];
+  actions?: Action[];
 }
 
 export interface CardSectionProps {
   title?: string;
-  actions?: IAction[];
+  actions?: Action[];
 }

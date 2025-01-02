@@ -1,6 +1,6 @@
-import type { IAction } from '../../../types';
+import type { ActionButton } from '#ds/types';
 
 export interface PageActionsProps {
-  primaryAction?: IAction;
-  secondaryActions?: IAction[];
+  primaryAction?: ActionButton;
+  secondaryActions?: ActionButton[];
 }

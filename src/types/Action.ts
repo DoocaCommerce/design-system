@@ -1,6 +1,7 @@
+import type { ButtonVariant } from '#ds/components/ui/button/types';
 import type { Size, Target, Variant } from './general';
 
-export interface IAction {
+export interface Action {
   leadingIcon?: string;
   label?: string;
   onAction?(): void;
@@ -12,4 +13,8 @@ export interface IAction {
   target?: Target;
   class?: string;
   size?: Size;
+}
+
+export interface ActionButton extends Omit<Action, 'variant'> {
+  variant?: ButtonVariant;
 }
