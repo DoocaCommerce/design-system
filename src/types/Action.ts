@@ -1,4 +1,4 @@
-import type { ButtonVariant } from '#ds/components/ui/button/types.js';
+import type { ButtonVariant } from '#ds/components/ui/button/types';
 import type { Size, Target, Variant } from './general';
 
 export interface Action {

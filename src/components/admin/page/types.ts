@@ -1,4 +1,4 @@
-import type { ActionButton } from '#ds/types/Action.js';
+import type { ActionButton } from '#ds/types';
 import type { IArticle } from '../page-helper-articles';
 import type { IVideo } from '../page-helper-video';
 

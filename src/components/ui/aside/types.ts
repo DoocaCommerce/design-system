@@ -1,4 +1,4 @@
-import type { ActionButton } from '#ds/types/Action.js';
+import type { ActionButton } from '#ds/types';
 import type { Action, Size } from '../../../types';
 
 export interface AsideProps {

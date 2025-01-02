@@ -1,6 +1,6 @@
 import type { MaskType } from 'maska';
 import type { Size } from '../../../types';
-import type { ActionButton } from '#ds/types/Action.js';
+import type { ActionButton } from '#ds/types';
 
 export interface FormTextfieldProps {
   leadingIcon?: string;

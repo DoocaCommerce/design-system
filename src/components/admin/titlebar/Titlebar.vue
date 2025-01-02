@@ -5,7 +5,7 @@ import Dropdown from '../../ui/dropdown/Dropdown.vue';
 import DropdownItemButton from '../../ui/dropdown/DropdownItemButton.vue';
 import Button from '../../ui/button/Button.vue';
 import type { TitlebarProps } from './types';
-import type { ButtonVariant } from '#ds/components/ui/button/types.js';
+import type { ButtonVariant } from '#ds/components/ui/button/types';
 
 const props = defineProps<TitlebarProps>();
 
