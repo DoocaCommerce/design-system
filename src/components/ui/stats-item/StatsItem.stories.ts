@@ -5,7 +5,7 @@ import StatsItem from './StatsItem.vue';
 /**
  * Base component used for the Stats Group.
  *
- * **Deprecated:** este componente está depreciado e será removido em breve.
+ * **Deprecated:** Este componente está depreciado e será removido em versões futuras.
  */
 const meta = {
   title: 'Ui/⛔ Stats Item',

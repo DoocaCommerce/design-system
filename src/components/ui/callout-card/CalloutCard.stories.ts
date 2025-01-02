@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/vue3';
 import CalloutCard from './CalloutCard.vue';
 
 /**
- * **Deprecated:** este componente está depreciado e será removido em breve.
+ * **Deprecated:** Este componente está depreciado e será removido em versões futuras.
  */
 const meta: Meta<typeof CalloutCard> = {
   title: 'Ui/⛔ Callout Card',

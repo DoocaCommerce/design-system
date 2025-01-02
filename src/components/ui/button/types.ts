@@ -13,15 +13,15 @@ export interface ButtonProps {
   href?: string;
   block?: boolean;
   /** Propriedade que transforma o botão em um router-link
-   * **Deprecated:** essa propriedade está depreciada e será removida em breve. Use `href`.
+   * **Deprecated:** essa propriedade está depreciado e será removido em versões futuras. Use `href` ou trate via evento.
    *
-   * @deprecated Não usar! Use o `href` no lugar ou trate via evento. */
+   * @deprecated essa propriedade está depreciado e será removido em versões futuras. Use `href` ou trate via evento */
   to?: object;
   /** Propriedade que adiciona uma borda específica ao spinner quando o botão está em
    * estado de loading
-   * **Deprecated:** essa propriedade está depreciada e será removida em breve.
+   * **Deprecated:** essa propriedade está depreciada e será removida em versões futuras.
    *
-   * @deprecated Não usar! */
+   * @deprecated essa propriedade está depreciada e será removida em versões futuras. */
   spinnerBorder?: number | string;
   type?: string;
   loading?: boolean;

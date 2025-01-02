@@ -1,6 +1,6 @@
 <script lang="ts">
 /**
- * **Deprecated:** esse componente está depreciado e será removido em breve.
+ * **Deprecated:** Este componente está depreciado e será removido em versões futuras.
  *
  * @deprecated Este componente está depreciado e será removido em versões futuras.
  */

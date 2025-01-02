@@ -2,7 +2,7 @@ import StatsGroup from './StatsGroup.vue';
 import type { Meta, StoryObj } from '@storybook/vue3';
 
 /**
- * **Deprecated:** este componente está depreciado e será removido em breve.
+ * **Deprecated:** Este componente está depreciado e será removido em versões futuras.
  */
 const meta: Meta<typeof StatsGroup> = {
   title: 'admin/⛔ StatsGroup',
