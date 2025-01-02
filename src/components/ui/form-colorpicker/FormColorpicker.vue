@@ -124,6 +124,7 @@ onMounted(() => {
 			pickr.value.getColor().toHEXA().toString() != props.modelValue
 		) {
 			pickr.value.setColor(props.modelValue)
+			pickr.value.options.default = props.modelValue
 		}
 	})
 })
@@ -131,6 +132,7 @@ onMounted(() => {
 watchPostEffect(() => {
 	if (pickr.value && props.modelValue && !focused.value) {
 		pickr.value.setColor(props.modelValue)
+		pickr.value.options.default = props.modelValue
 	}
 })
 
