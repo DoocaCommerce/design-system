@@ -1,0 +1,22 @@
+import { Meta, Story, Canvas } from '@storybook/blocks';
+import * as TokensStories from './tokens.stories.ts';
+
+<Meta title="Design Tokens/Tokens primitivos" />
+
+# Tokens primitivos
+
+Tokens primitivos são aqueles tokens base para gerar qualquer outro token, 
+constinuindo parte fundamental do Design System.  Esses tokens não podem ser modificados 
+pelos usuários de modo a garantir a integridade de todos os outros tokens.
+
+
+### Tokens primitivos de cor
+<Story of={TokensStories.primitiveColors} />
+
+
+### Tokens primitivos de espaçamento
+<Story of={TokensStories.primitiveSpacing} />
+
+
+### Tokens primitivos de bordas
+<Story of={TokensStories.primitiveBorders} />
