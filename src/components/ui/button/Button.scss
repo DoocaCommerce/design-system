@@ -20,13 +20,6 @@
     font: var(--s-typography-label-medium);
   }
 
-  &.-outline {
-    background-color: transparent;
-    border-color: transparent;
-    color: var(--s-color-content-default);
-    box-shadow: none;
-  }
-
   &:hover {
     background-color: var(--s-color-fill-default-hover);
     text-decoration: none;
@@ -67,7 +60,7 @@
     }
   }
 
-  &.-primary {
+  &.-highlight {
     background-color: var(--s-color-fill-highlight);
     color: var(--s-color-content-on-color);
     border-color: var(--s-color-border-highlight);
@@ -89,7 +82,7 @@
     }
   }
 
-  &.-danger {
+  &.-critical {
     background-color: var(--s-color-fill-critical);
     color: var(--s-color-content-on-color);
     border-color: var(--s-color-border-critical);
@@ -144,22 +137,6 @@
     }
   }
 
-  &.-flush-left {
-    margin-left: calc(var(--s-spacing-x-small) * -1);
-
-    &.-sm {
-      margin-left: calc(var(--s-spacing-xx-small) * -1);
-    }
-  }
-
-  &.-flush-right {
-    margin-right: calc(var(--s-spacing-x-small) * -1);
-
-    &.-sm {
-      margin-right: calc(var(--s-spacing-xx-small) * -1);
-    }
-  }
-
   &.-block {
     width: 100%;
   }
@@ -194,17 +171,15 @@
     align-items: center;
   }
 
-  @include mobile {
-    &.-sm.-only-icon {
-      padding: var(--s-spacing-quark);
-    }
+  &.-sm.-only-icon {
+    padding: var(--s-spacing-pico);
+  }
 
-    &.-md.-only-icon {
-      padding: var(--s-spacing-nano);
-    }
+  &.-md.-only-icon {
+    padding: var(--s-spacing-micro);
+  }
 
-    &.-lg.-only-icon {
-      padding: var(--s-spacing-xx-small);
-    }
+  &.-lg.-only-icon {
+    padding: var(--s-spacing-xx-small);
   }
 }

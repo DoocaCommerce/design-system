@@ -1,8 +1,9 @@
-import type { Size, Variant } from '../../../types';
+import type { Size } from '../../../types';
+import type { ButtonVariant } from '../button/types';
 
 export interface IconButtonProps {
   icon?: string;
-  variant?: Variant;
+  variant?: ButtonVariant;
   size?: Size;
   fab?: boolean;
   disabled?: boolean;

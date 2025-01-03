@@ -6,7 +6,7 @@ export const defaultPropEmptyResultDisplay: IndexTableEmptyResultProps = {
     'Não encontramos nenhum item que corresponda à sua pesquisa.<br>Verifique o termo digitado ou tente um filtro diferente.',
   button: {
     label: 'Limpar filtros',
-    variant: 'primary',
+    variant: 'highlight',
   },
   showIcon: true,
   showButton: true,

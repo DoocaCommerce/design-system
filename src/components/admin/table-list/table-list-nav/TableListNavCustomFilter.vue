@@ -114,24 +114,24 @@ const onShowDropdown = () => {
 
 <template>
   <span v-if="!isMobile()" class="table-list-nav-item -custom-filter">
-    <Dropdown ref="dropdownRef" @show="onShowDropdown" :disabled="disableDropdown" right>
+    <Dropdown ref="dropdownRef" :disabled="disableDropdown" right @show="onShowDropdown">
       <template #button-content>
         <Button
           v-if="Number(state.currentTab) >= 1"
           label="Editar filtro"
-          leadingIcon="star"
+          leading-icon="star"
           size="sm"
-          variant="primary"
+          variant="highlight"
           :disabled="disableDropdown" />
-        <Button v-else label="Salvar filtro" size="sm" leadingIcon="star" :disabled="disableDropdown" />
+        <Button v-else label="Salvar filtro" size="sm" leading-icon="star" :disabled="disableDropdown" />
       </template>
       <div class="dropdown-section">
         <DropdownSection>
-          <form @submit.prevent="onSave" id="form-custom-filter" autocomplete="off">
+          <form id="form-custom-filter" autocomplete="off" @submit.prevent="onSave">
             <h6>Salvar filtro</h6>
             <FormTextfield
-              size="sm"
               v-model="reg.name"
+              size="sm"
               placeholder="Nome do filtro"
               data-close="none"
               required
@@ -140,7 +140,14 @@ const onShowDropdown = () => {
           </form>
         </DropdownSection>
         <div class="dropdown-section-buttons">
-          <Button v-if="reg.id" size="sm" tabindex="-1" label="Remover" variant="danger" outline @click="onRemoveTab" />
+          <Button
+            v-if="reg.id"
+            size="sm"
+            tabindex="-1"
+            label="Remover"
+            variant="critical"
+            outline
+            @click="onRemoveTab" />
           <Button size="sm" label="Salvar" tabindex="2" type="submit" form="form-custom-filter" />
         </div>
       </div>

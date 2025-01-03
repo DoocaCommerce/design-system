@@ -1,3 +1,10 @@
+<script lang="ts">
+/**
+ * @deprecated Este componente está depreciado e será removido em versões futuras.
+ */
+export default {};
+</script>
+
 <script setup lang="ts">
 import Icon from '../../ui/icon/Icon.vue';
 import Link from '../../ui/link/Link.vue';
@@ -33,7 +40,7 @@ const isMobile = window.innerWidth <= 768;
         :href="item.href"
         :to="item.to"
         size="sm"
-        variant="primary" />
+        variant="highlight" />
       <Link v-else :label="item.text" :href="item.href" :to="item.to" />
     </small>
 

@@ -37,7 +37,7 @@ if (props.size) {
       :title="title"
       :to="to"
       :backlink="backlink"
-      :groupActions="groupActions"
+      :group-actions="groupActions"
       :primary-action="primaryAction"
       :secondary-actions="secondaryActions">
       <template #titlebar-subtitle>

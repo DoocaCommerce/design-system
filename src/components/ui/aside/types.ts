@@ -1,4 +1,5 @@
-import type { IAction, Size } from '../../../types';
+import type { ActionButton } from '#ds/types';
+import type { Action, Size } from '../../../types';
 
 export interface AsideProps {
   modelValue?: boolean;
@@ -9,12 +10,12 @@ export interface AsideProps {
   size?: Size;
   tag?: string;
   inner?: boolean;
-  primaryAction?: IAction;
-  secondaryActions?: IAction[];
+  primaryAction?: ActionButton;
+  secondaryActions?: ActionButton[];
   scrollableContentId?: string;
 }
 
 export interface AsideSectionProps {
   title?: string;
-  actions?: IAction[];
+  actions?: Action[];
 }

@@ -1,3 +1,10 @@
+<script lang="ts">
+/**
+ * @deprecated Este componente está depreciado e será removido em versões futuras. Use o Button.
+ */
+export default {};
+</script>
+
 <script lang="ts" setup>
 import { watchEffect, ref, useAttrs, onMounted } from 'vue';
 import { $dialog } from '../../ui/dialog';
@@ -93,7 +100,7 @@ const onClick = (evt: MouseEvent) => {
       <TextStyle v-else variant="danger" label="Inativo" />
     </Button>
     <!-- <div v-if="type == 'active'" class="text-right" @click="onClick">
-		
+
 			<TextStyle v-if="active" variant="success" label="Ativo" />
 			<TextStyle v-else variant="danger" label="Inativo" />
 		</div> -->

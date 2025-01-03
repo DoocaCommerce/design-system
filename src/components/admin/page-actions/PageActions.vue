@@ -8,18 +8,18 @@ defineProps<PageActionsProps>();
 <template>
   <div class="ui-page-actions">
     <div v-if="secondaryActions" class="ui-page-actions-secondary">
-      <Button v-for="item in secondaryActions" :variant="item.variant" @click="item.onAction" outline>
+      <Button v-for="(item, index) in secondaryActions" :key="index" :variant="item.variant" @click="item.onAction">
         {{ item.label }}
       </Button>
     </div>
-    <div class="ui-page-actions-primary" v-if="primaryAction">
+    <div v-if="primaryAction" class="ui-page-actions-primary">
       <Button
         v-if="primaryAction"
         variant="success"
         type="submit"
-        @click="primaryAction?.onAction"
         :to="primaryAction.to"
-        :leadingIcon="primaryAction.leadingIcon">
+        :leading-icon="primaryAction.leadingIcon"
+        @click="primaryAction?.onAction">
         {{ primaryAction.label }}
       </Button>
     </div>

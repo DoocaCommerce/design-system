@@ -1,5 +1,8 @@
 import Button from './Button.vue';
 import type { Meta, StoryObj } from '@storybook/vue3';
+import type { ButtonVariant } from './types';
+
+const variants: ButtonVariant[] = ['highlight', 'success', 'critical', 'plain', 'link', 'default'];
 
 /** Buttons are used to initialize an action. The words on a button tell you what will happen when you click it. */
 const meta: Meta<typeof Button> = {
@@ -21,7 +24,11 @@ const meta: Meta<typeof Button> = {
     },
     variant: {
       control: 'select',
-      options: ['primary', 'success', 'danger', 'plain', 'link', 'default'],
+      options: variants,
+    },
+    target: {
+      control: 'select',
+      options: ['_blank', '_self'],
     },
     block: {
       control: 'boolean',
@@ -31,85 +38,74 @@ const meta: Meta<typeof Button> = {
       control: 'number',
       defaultValue: 2,
     },
-    loading: {
-      control: 'boolean',
-      defaultValue: false,
-    },
-    outline: {
-      control: 'boolean',
-      defaultValue: false,
-    },
-    disclosure: {
-      control: 'boolean',
-      defaultValue: false,
-    },
-    target: {
-      control: 'text',
-      defaultValue: '',
-    },
-    disabled: {
-      control: 'boolean',
-      defaultValue: false,
-    },
+    loading: { control: { type: 'boolean' } },
+    disabled: { control: { type: 'boolean' } },
   },
 };
 
 export default meta;
 type Story = StoryObj<typeof Button>;
 
-export const Default: Story = {};
+export const minimum: Story = {};
 
-export const Primary: Story = {
+export const highlight: Story = {
   args: {
-    variant: 'primary',
+    variant: 'highlight',
   },
 };
 
-export const Success: Story = {
+export const success: Story = {
   args: {
     variant: 'success',
   },
 };
 
-export const Danger: Story = {
+export const critical: Story = {
   args: {
-    variant: 'danger',
+    variant: 'critical',
   },
 };
 
-export const Plain: Story = {
+export const plain: Story = {
   args: {
     variant: 'plain',
   },
 };
 
-export const Link: Story = {
+export const link: Story = {
   args: {
     variant: 'link',
     target: '_blank',
   },
 };
 
-export const Loading: Story = {
+export const loading: Story = {
   args: {
     loading: true,
   },
 };
 
-export const Disabled: Story = {
+export const disabled: Story = {
   args: {
     disabled: true,
   },
 };
 
-export const TrailingIcon: Story = {
+export const trailingIcon: Story = {
   args: {
     trailingIcon: 'check',
   },
 };
 
-export const LeadingIcon: Story = {
+export const leadingIcon: Story = {
   args: {
     leadingIcon: 'check',
+  },
+};
+
+export const onlyIcon: Story = {
+  args: {
+    leadingIcon: 'token',
+    onlyIcon: true,
   },
 };

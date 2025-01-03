@@ -1,9 +1,13 @@
 import IconButton from './IconButton.vue';
 import type { Meta, StoryObj } from '@storybook/vue3';
 
-/** Icon buttons are often in app bars and toolbars. They're good for toggle buttons, like adding or removing something. */
+/**
+ * Icon buttons are often in app bars and toolbars. They're good for toggle buttons, like adding or removing something.
+ *
+ * **Deprecated:** Este componente está depreciado e será removido em versões futuras. Use o Button com a propriedade `only-icon` no lugar.
+ */
 const meta: Meta<typeof IconButton> = {
-  title: 'Ui/Button/IconButton',
+  title: 'Ui/Button/⛔ IconButton',
   component: IconButton,
   tags: ['autodocs'],
   args: {

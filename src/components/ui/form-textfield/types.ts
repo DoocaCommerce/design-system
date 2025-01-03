@@ -1,5 +1,6 @@
 import type { MaskType } from 'maska';
-import type { IAction, Size } from '../../../types';
+import type { Size } from '../../../types';
+import type { ActionButton } from '#ds/types';
 
 export interface FormTextfieldProps {
   leadingIcon?: string;
@@ -33,7 +34,7 @@ export interface FormTextfieldProps {
   type?: string;
   mask?: MaskType;
   raw?: any;
-  actions?: IAction[];
+  actions?: ActionButton[];
   max?: string | number;
   min?: string | number;
   dataMaskaTokens?: string;

@@ -16,7 +16,7 @@ const meta: MergedType = {
     cancelLabel: 'Cancel',
     destructIcon: '',
     destructLabel: 'Deletar',
-    destructVariant: 'danger',
+    destructVariant: 'critical',
     hideFooter: false,
     hideCancel: false,
     opened: true,
@@ -35,7 +35,7 @@ const meta: MergedType = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const minimum: Story = {
   render: (args) => ({
     components: { Dialog, Button },
     setup() {
@@ -45,26 +45,26 @@ export const Default: Story = {
       return { args, onClick };
     },
     template: `
-    <Button variant="primary" @click="onClick" label="open" />
+    <Button variant="highlight" @click="onClick" label="open" />
     `,
   }),
 };
 
-export const DefaultPrompt: Story = {
+export const defaultPrompt: Story = {
   args: {
     type: 'prompt',
     promptLabel: 'Prompt Label',
     promptPlaceholder: 'Placeholder here...',
     hideFooter: true,
   },
-  render: Default.render,
+  render: minimum.render,
 };
 
-export const PromptWithFooter: Story = {
+export const promptWithFooter: Story = {
   args: {
     type: 'prompt',
     promptLabel: 'Prompt Label',
     promptPlaceholder: 'Placeholder here...',
   },
-  render: Default.render,
+  render: minimum.render,
 };

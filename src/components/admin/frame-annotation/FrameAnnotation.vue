@@ -1,3 +1,10 @@
+<script lang="ts">
+/**
+ * @deprecated Este componente está depreciado e será removido em versões futuras.
+ */
+export default {};
+</script>
+
 <script setup lang="ts">
 import Col from '../../ui/grid/col/Col.vue';
 import Row from '../../ui/grid/row/Row.vue';

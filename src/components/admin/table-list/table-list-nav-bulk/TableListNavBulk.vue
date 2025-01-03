@@ -122,12 +122,12 @@ onMounted(() => {
 
 <template>
   <div v-show="!config.hideCheckbox" class="table-list-nav-bulk" :class="{ '-active': selected.length }">
-    <div @click="onCheckAll" class="-checkbox">
-      <FormCheckbox :indeterminate="indeterminate" :value="allSelected" v-model="checkbox" noEvents />
+    <div class="-checkbox" @click="onCheckAll">
+      <FormCheckbox v-model="checkbox" :indeterminate="indeterminate" :value="allSelected" no-events />
     </div>
 
     <span v-show="selected.length && config.actions?.includes('remove')" class="table-list-nav-item">
-      <Button size="sm" leadingIcon="delete" @click="onRemoveDialog" label="Deletar" />
+      <Button size="sm" leading-icon="delete" label="Deletar" @click="onRemoveDialog" />
     </span>
 
     <Dropdown v-show="selected.length && bulkActions && bulkActions.length > 0" right>
@@ -137,10 +137,10 @@ onMounted(() => {
 
       <DropdownItemButton
         v-for="action in bulkActions"
-        @click.stop="action.onAction(selected)"
         :key="action.label"
         :variant="action.variant"
-        :label="action.label" />
+        :label="action.label"
+        @click.stop="action.onAction(selected)" />
     </Dropdown>
   </div>
 </template>

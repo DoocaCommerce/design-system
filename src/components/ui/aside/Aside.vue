@@ -70,33 +70,38 @@ watchEffect(() => {
         ]">
         <div class="ui-aside-overlay" :class="{ '-close': !noCloseOnBackdrop }" @click="onClickBackdrop"></div>
 
-        <div class="ui-aside-content" :id="scrollableContentId">
+        <div :id="scrollableContentId" class="ui-aside-content">
           <div class="ui-aside-header" :style="subtitle ? 'align-items: flex-start' : 'align-items: center'">
             <div class="header-wrapper">
               <h4 class="title">
                 {{ title }}
               </h4>
-              <p class="d-block text-muted mb-0" v-if="subtitle">{{ subtitle }}</p>
+              <p v-if="subtitle" class="d-block text-muted mb-0">{{ subtitle }}</p>
             </div>
-            <IconButton @click="onClose" id="btn-close" icon="close" variant="plain" type="rounded" />
+            <IconButton id="btn-close" icon="close" variant="plain" type="rounded" @click="onClose" />
           </div>
 
           <div class="ui-aside-body">
             <slot name="default" />
           </div>
 
-          <div class="ui-aside-footer" v-if="primaryAction">
+          <div v-if="primaryAction" class="ui-aside-footer">
             <Button
               type="submit"
-              @click="primaryAction.onAction"
               :label="primaryAction.label"
               :disabled="primaryAction.disabled"
-              :variant="primaryAction.variant ?? 'primary'"
-              :form="primaryAction.form" />
+              :variant="primaryAction.variant ?? 'highlight'"
+              :form="primaryAction.form"
+              @click="primaryAction.onAction" />
 
-            <Button v-for="item in secondaryActions" type="button" @click="item.onAction" :label="item.label" />
+            <Button
+              v-for="(item, index) in secondaryActions"
+              :key="index"
+              type="button"
+              :label="item.label"
+              @click="item.onAction" />
           </div>
-          <div class="ui-aside-footer" v-if="haveSlot('footer')">
+          <div v-if="haveSlot('footer')" class="ui-aside-footer">
             <slot name="footer" />
           </div>
         </div>

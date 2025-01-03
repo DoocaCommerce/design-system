@@ -1,8 +1,11 @@
 @import '../primitives/spacing';
 
 $semantic-spacing: (
+  planck: $primitive-spacing-2px,
   quark: $primitive-spacing-4px,
+  pico: $primitive-spacing-6px,
   nano: $primitive-spacing-8px,
+  micro: $primitive-spacing-10px,
   xx-small: $primitive-spacing-12px,
   x-small: $primitive-spacing-16px,
   small: $primitive-spacing-24px,

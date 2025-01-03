@@ -50,7 +50,7 @@ export const Default: Story = {
     },
     template: `
     <div>
-      <Button variant="primary" v-on:click="modelValue = true" >Open aside</Button>
+      <Button variant="highlight" v-on:click="modelValue = true" >Open aside</Button>
       <Aside v-bind="args" v-model="modelValue" @update:modelValue="onUpdateModelValue"/>
     </div>`,
   }),

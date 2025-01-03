@@ -40,8 +40,8 @@ watchEffect(() => (showBody.value = !props.dropdownClosed));
 
 <template>
   <div
-    class="ui-card"
     :id="uid"
+    class="ui-card"
     :class="{
       '-hide': !showBody,
       '-collapse': isDropdown,
@@ -54,10 +54,10 @@ watchEffect(() => (showBody.value = !props.dropdownClosed));
       '-no-padding': noPadding,
       '-plain': plain,
     }">
-    <div class="ui-card-loading" v-if="loading">
+    <div v-if="loading" class="ui-card-loading">
       <Spinner size="50" />
     </div>
-    <div class="ui-card-header" @click="isDropdown ? toggleShowBody() : null" v-if="title || haveSlot('header-title')">
+    <div v-if="title || haveSlot('header-title')" class="ui-card-header" @click="isDropdown ? toggleShowBody() : null">
       <div class="ui-card-header-content">
         <div class="ui-header-content-title">
           <slot name="header-title">
@@ -75,16 +75,16 @@ watchEffect(() => (showBody.value = !props.dropdownClosed));
           <Link v-if="actions" v-for="item in actions" :key="item.label" @click="item.onAction">
             {{ item.label }}
           </Link>
-          <slot name="header-button" v-if="haveSlot('header-button')" />
-          <button type="button" class="btn-collapse" v-if="isDropdown">
+          <slot v-if="haveSlot('header-button')" name="header-button" />
+          <Button v-if="isDropdown" type="button" class="btn-collapse">
             <div v-if="showBody">
               <Icon class="btn-collapse-icon" name="expand_less" :size="24" />
             </div>
             <div v-if="!showBody">
               <Link v-if="dropdownLabel">{{ dropdownLabel }}</Link>
-              <Icon class="btn-collapse-icon" v-else name="expand_more" :size="24" />
+              <Icon v-else class="btn-collapse-icon" name="expand_more" :size="24" />
             </div>
-          </button>
+          </Button>
         </div>
       </div>
 
@@ -97,11 +97,11 @@ watchEffect(() => (showBody.value = !props.dropdownClosed));
       </div>
     </div>
 
-    <div class="ui-card-body" v-show="showBody">
+    <div v-show="showBody" class="ui-card-body">
       <slot />
     </div>
 
-    <div class="ui-card-footer" v-if="haveSlot('footer')" v-show="showBody">
+    <div v-if="haveSlot('footer')" v-show="showBody" class="ui-card-footer">
       <slot name="footer" />
     </div>
   </div>

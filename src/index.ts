@@ -111,6 +111,7 @@ export * from './components/ui/timeline';
 export * from './components/ui/toast';
 export * from './components/ui/youtube-player';
 export * from './components/ui/index-table';
+export * from './components/ui/feedback-message';
 
 // Types
 export * from './types';

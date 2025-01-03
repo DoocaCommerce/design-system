@@ -120,7 +120,7 @@ defineExpose({
             <span>{{ filter.name }}</span>
             <Icon name="expand_more" />
           </div>
-          <div class="filter-list-accordion" v-if="accordion[key]" v-show="accordion[key]">
+          <div v-if="accordion[key]" v-show="accordion[key]" class="filter-list-accordion">
             <div v-if="filter.type == 'browser'">
               <BrowserSelect
                 v-model="selected[key]"
@@ -167,9 +167,9 @@ defineExpose({
               <Button
                 size="md"
                 variant="link"
-                @click="onClearFilter(filter, key)"
                 :disabled="!hasFilterSelected(filter, key)"
-                label="Limpar" />
+                label="Limpar"
+                @click="onClearFilter(filter, key)" />
             </div>
           </div>
         </div>
@@ -177,8 +177,8 @@ defineExpose({
     </form>
     <template #footer>
       <div class="filter-list-actions">
-        <Button size="md" type="submit" form="form-filter" variant="primary" leadingIcon="check">Aplicar</Button>
-        <Button size="md" @click="onClearAll" :disabled="!hasSelected()">Limpar os filtros</Button>
+        <Button size="md" type="submit" form="form-filter" variant="highlight" leading-icon="check">Aplicar</Button>
+        <Button size="md" :disabled="!hasSelected()" @click="onClearAll">Limpar os filtros</Button>
       </div>
     </template>
   </Aside>

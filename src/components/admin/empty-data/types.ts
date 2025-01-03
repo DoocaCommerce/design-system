@@ -1,4 +1,4 @@
-import type { IAction } from '../../../types/IAction';
+import type { ActionButton } from '../../../types/Action';
 
 export interface EmptyDataProps {
   label?: string;
@@ -6,6 +6,6 @@ export interface EmptyDataProps {
   caption?: string;
   iconType?: 'outlined' | 'filled' | 'rounded' | 'twotone' | undefined;
   link?: boolean;
-  actions?: IAction;
+  actions?: ActionButton;
   noBorder?: boolean;
 }

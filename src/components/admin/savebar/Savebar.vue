@@ -36,13 +36,13 @@ const onSave = () => emit('save');
     <Container class="ui-savebar-container">
       <div class="ui-savebar-text">Alterações feitas</div>
       <div class="ui-savebar-actions">
-        <Button @click="handleDiscardChanges" class="ui-savebar-restore" :disabled="loading">
+        <Button class="ui-savebar-restore" :disabled="loading" @click="handleDiscardChanges">
           <div>Descartar alterações</div>
         </Button>
         <Button
           variant="success"
           type="submit"
-          leadingIcon="check"
+          leading-icon="check"
           label="Salvar"
           :loading="loading"
           :disabled="loading"

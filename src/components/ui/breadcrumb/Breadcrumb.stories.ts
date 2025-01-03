@@ -3,7 +3,7 @@ import BreadcrumbItem from './BreadcrumbItem.vue';
 import type { Meta, StoryObj } from '@storybook/vue3';
 
 const meta: Meta<typeof Breadcrumb> = {
-  title: 'Ui/Breadcrumb',
+  title: 'Ui/⛔ Breadcrumb',
   component: Breadcrumb,
   tags: ['autodocs'],
 };
