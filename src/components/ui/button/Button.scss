@@ -18,6 +18,8 @@
 
   &-label {
     font: var(--s-typography-label-medium);
+    display: flex;
+    flex-grow: 1;
   }
 
   &:hover {
@@ -169,6 +171,7 @@
     line-height: 1;
     gap: var(--s-spacing-nano);
     align-items: center;
+    flex-grow: 1;
   }
 
   &.-sm.-only-icon {

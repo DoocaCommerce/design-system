@@ -46,7 +46,7 @@ const componentType = computed(() => {
 
       <Spinner v-if="loading" :size="16" :border="spinnerBorder" />
 
-      <div v-if="(label || $slots.default) && !onlyIcon" class="ui-button-label">
+      <div v-if="label || $slots.default" class="ui-button-label">
         <slot>{{ label }}</slot>
       </div>
 

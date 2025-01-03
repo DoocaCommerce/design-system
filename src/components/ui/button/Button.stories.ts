@@ -1,4 +1,5 @@
 import Button from './Button.vue';
+import Icon from '../icon/Icon.vue';
 import type { Meta, StoryObj } from '@storybook/vue3';
 import type { ButtonVariant } from './types';
 
@@ -105,7 +106,27 @@ export const leadingIcon: Story = {
 
 export const onlyIcon: Story = {
   args: {
+    label: '',
     leadingIcon: 'token',
+    onlyIcon: true,
+  },
+};
+
+export const withLargerIconAddedInSlot: Story = {
+  render: (args) => ({
+    components: { Button, Icon },
+    setup() {
+      return { args };
+    },
+    template: `
+      <Button v-bind="args">
+        <Icon name="check" size="20" />
+        {{ args.label }}
+      </Button>
+    `,
+  }),
+  args: {
+    label: '',
     onlyIcon: true,
   },
 };
