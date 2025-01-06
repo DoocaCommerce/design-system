@@ -1,59 +1,41 @@
-# design-system
+<p align="center">  
+  <img src="https://raw.githubusercontent.com/uxshop/design-system/refs/heads/v3.x/public/logo.svg" width="300"/>
+  <hr/>  
+</p>
 
-This template should help get you started developing with Vue 3 in Vite.
+> [!IMPORTANT]
+> Essa documentação destina-se apenas a versão 3.x do Design System. Caso queria usar a versão mais recente, verifique a branch principal [v4.x](https://github.com/uxshop/design-system).
 
-## Recommended IDE Setup
+## Como usar
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.vscode-typescript-vue-plugin).
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
-
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
-
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
+Para usar o Design System no seu projeto, execute um dos comandos a seguir. Lembre de trocar `{TAG}` ou `{HASH}` pela versão que deseja.
 
 ```sh
-npm install
+# Instala a última versão em desenvolvimento a partir da branch v3.x
+npm install git+https://github.com/uxshop/design-system.git#v3.x
+
+# Instala a versão da tag 3.1.13
+npm install git+https://github.com/uxshop/design-system.git#{TAG}
+
+# Instala a versão referente ao hash do commit indicado.
+npm install git+https://github.com/uxshop/design-system.git#{HASH}
+
 ```
 
-### Compile and Hot-Reload for Development
+## Comandos disponíveis
 
-```sh
+Abaixo uma lista dos comandos disponíveis.
+
+```
 npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
+npm run preview
 npm run test:unit
-```
-
-### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
-
-```sh
-npm run build
-npm run test:e2e # or `npm run test:e2e:ci` for headless testing
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
+npm run test:e2e
+npm run test:e2e:ci
+npm run test:check
+npm run typecheck
 npm run lint
+npm run prepare
+npm run storybook
+npm run build-storybook
 ```
