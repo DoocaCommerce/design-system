@@ -4,14 +4,18 @@ import tokens from './tokens.json';
 
 /* Global variables */
 
-const parsedTokens: ParsedTokens = {};
+const parsedTokens: ParsedTokens = {
+  primitives: {},
+  brand: {},
+  semantics: {},
+};
 
 /* Types */
 
 interface ParsedTokens {
-  primitives?: Record<string, any>;
-  brand?: Record<string, any>;
-  semantics?: Record<string, any>;
+  primitives: Record<string, any>;
+  brand: Record<string, any>;
+  semantics: Record<string, any>;
 }
 
 type ClassifiedTokens = Required<ParsedTokens>;
@@ -89,7 +93,7 @@ const defineGroup = (token: string): string => {
  * @param {Record<string, any>} tokens
  * @returns Classified tokens
  */
-const classifyToken = (tokens: Record<string, any> | undefined) => {
+const classifyToken = (tokens: Record<string, any>) => {
   const result = {};
 
   Object.entries(tokens).forEach(([key, value]) => {

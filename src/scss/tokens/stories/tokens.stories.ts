@@ -253,10 +253,27 @@ export const semanticsColors: Story = {
   }),
 };
 
-export const semanticsBorders: Story = {
+export const semanticsBordersWidth: Story = {
   render: (args) => ({
     setup() {
-      const tokens = loadTokens('semantics', 'border');
+      const tokens = loadTokens('semantics', 'border', 'width');
+      return { args, tokens, loadPreview };
+    },
+    components,
+    template: generateTemplate({
+      type: 'border',
+      columnWidth: {
+        value: 150,
+        preview: 300,
+      },
+    }),
+  }),
+};
+
+export const semanticsBordersRadius: Story = {
+  render: (args) => ({
+    setup() {
+      const tokens = loadTokens('semantics', 'border', 'radius');
       return { args, tokens, loadPreview };
     },
     components,
@@ -304,10 +321,44 @@ export const semanticsZIndex: Story = {
   }),
 };
 
-export const semanticsTypography: Story = {
+export const semanticsTypographyFamily: Story = {
   render: (args) => ({
     setup() {
-      const tokens = loadTokens('semantics', 'font');
+      const tokens = loadTokens('semantics', 'font', 'family');
+      return { args, tokens, loadPreview };
+    },
+    components,
+    template: generateTemplate({
+      type: 'font',
+      columnWidth: {
+        value: 150,
+        preview: 400,
+      },
+    }),
+  }),
+};
+
+export const semanticsTypographySize: Story = {
+  render: (args) => ({
+    setup() {
+      const tokens = loadTokens('semantics', 'font', 'size');
+      return { args, tokens, loadPreview };
+    },
+    components,
+    template: generateTemplate({
+      type: 'font',
+      columnWidth: {
+        value: 150,
+        preview: 400,
+      },
+    }),
+  }),
+};
+
+export const semanticsTypographyWeight: Story = {
+  render: (args) => ({
+    setup() {
+      const tokens = loadTokens('semantics', 'font', 'weight');
       return { args, tokens, loadPreview };
     },
     components,

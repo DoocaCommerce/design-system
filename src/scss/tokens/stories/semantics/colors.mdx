@@ -1,11 +1,15 @@
 import { Meta, Story, Canvas } from '@storybook/blocks';
 import * as TokensStories from '../tokens.stories.ts';
 
-<Meta title="Design Tokens/Semantico/Cores" />
+<Meta title="Design Tokens/Semântico/Cores" />
 
 # Cores
 
-Colocar texto aqui
+Tokens semanticos de cor extendem os primários, dando-lhes mais significado,
+de modo que sua aplicação seja fácil e simples entendimento para todos. Um exemplo
+disso seria o token `--s-color-background-default`. É simples enteder que ele deve
+ser aplicado ao background padrão dos componentes, ao invés e usar o 
+`--p-color-neutral-100` e precisar lembrar sempre quando utiliza-lo.
 
 <Story of={TokensStories.semanticsColors} />
 

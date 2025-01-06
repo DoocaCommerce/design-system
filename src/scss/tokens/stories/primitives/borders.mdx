@@ -4,14 +4,22 @@ import * as TokensStories from '../tokens.stories.ts';
 <Meta title="Design Tokens/Primitivo/Bordas" />
 
 # Bordas
-
 As bordas ajuda a delimitar os elementos e trazer a sensação de agrupamento,
 melhorando a organização e o entendimento pelo usuário.
-
 <br/>
+
 #### Largura da borda
-<Story of={TokensStories.primitiveBordersWidth} />
+Os tokens de largura da borda define a expessura que a borda de um componente
+poderá ter, variando comforme a tabela abaixo.
 
+<Story of={TokensStories.primitiveBordersWidth} />
 <br/>
+
 #### Raio da borda
+Os tokens de raio da borda define a curvatura que o componente poderá ter,
+variando comforme a tabela abaixo. Um ponto importante de atenção é sobre o token 
+`--p-border-radius-50%` possui um valor expresso em pixel pois dependendo do
+tamanho do elemento poderia gerar efeitos colaterais, como por exemplo um
+retangulo em formato de pílula.
+
 <Story of={TokensStories.primitiveBordersRadius} />
