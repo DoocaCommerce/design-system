@@ -1,4 +1,4 @@
-import type { DropFilesProps } from './types';
+import type { DropFilesProps } from '../../types';
 
 /**
  * Verificações de erro de dimensões para a imagem

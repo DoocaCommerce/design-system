@@ -1,4 +1,4 @@
-import type { DropFilesProps } from './types';
+import type { DropFilesProps } from '../../types';
 
 /**
  * Verificações de tamanhos para o arquivo
@@ -17,7 +17,9 @@ export const checkSizeError = (props: DropFilesProps, file: File): string | null
   }
 
   if (props.maxFileSize && file.size > props.maxFileSize) {
-    return props.texts!.errors.sizeExceeded.replace('{{size}}', `${(props.maxFileSize / 1024 / 1024).toString()}MB`);
+    const sizeInMB = (props.maxFileSize / 1024 / 1024).toString();
+
+    return props.texts!.errors.sizeExceeded.replace('{{size}}', `${sizeInMB}MB`);
   }
 
   return null;

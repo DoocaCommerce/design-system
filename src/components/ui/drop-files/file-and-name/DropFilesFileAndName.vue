@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { Icon } from '#ds/index';
-import type { DropFilesFileAndNameProps } from './types';
+import type { DropFilesFileAndNameProps } from '../types';
 
 const props = withDefaults(defineProps<DropFilesFileAndNameProps>(), {
   type: 'file',
@@ -25,5 +25,6 @@ const icon = computed(() => {
 <template>
   <Icon :name="icon" size="24" />
 
-  <p v-if="data.file" class="drop-files-file-name">{{ data.file.name }}</p>
+  <p v-if="data.file && data.file.name" class="drop-files-file-name">{{ data.file.name }}</p>
+  <p v-else class="drop-files-file-name">{{ errors.descriptionForCorruptedFile }}</p>
 </template>

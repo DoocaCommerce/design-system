@@ -1,15 +1,25 @@
-import { ref, computed } from 'vue';
-import { imageMimeTypes } from './mimeTypes';
-import type { DropFilesEmits, DropFilesProps, FileData } from './types';
-import { checkSizeError } from './checkSizeError';
-import { checkFormatCompatibility } from './checkFormatCompatibility';
-import { checkDimensionsError } from './checkDimensionsError';
+import { ref, computed, readonly } from 'vue';
+import { imageMimeTypes } from '../mimeTypes';
+import type { DropFilesEmits, DropFilesProps, FileData } from '../types';
+import { checkSizeError } from './validation/checkSizeError';
+import { checkFormatCompatibility } from './validation/checkFormatCompatibility';
+import { checkDimensionsError } from './validation/checkDimensionsError';
 
+/**
+ * Lógica para o componente de upload de arquivos.
+ *
+ * @param props - Propriedades do componente.
+ * @param emit - Emits do componente.
+ * @returns Propriedades e métodos necessários para o componente de upload de arquivos.
+ */
 export const useDropFiles = (props: DropFilesProps, emit: DropFilesEmits) => {
   const fileInput = ref<HTMLInputElement | null>(null);
   const fileList = ref<FileData[]>([]);
-  const errorMessages = ref<string[]>([]);
+  const uploadError = ref<string | null>(null);
   const isDragging = ref<boolean>(false);
+
+  /** Esse componente até o momento não suporta o upload de múltiplos arquivos mas esse ref foi implementado para garantir uma lógica mais preparada para isso caso mude no futuro. */
+  const multiple = readonly(ref<boolean>(false));
 
   const onlyAllowsImages = computed(() => {
     const allImageFormats = Object.keys(imageMimeTypes).flatMap((key) => imageMimeTypes[key]);
@@ -24,6 +34,13 @@ export const useDropFiles = (props: DropFilesProps, emit: DropFilesEmits) => {
     return isImage;
   });
 
+  const isPng = computed(() =>
+    fileList.value.some(
+      (currentFile) =>
+        currentFile.file && (currentFile.file.type === 'image/png' || currentFile.file.type === 'image/apng')
+    )
+  );
+
   const textSelect = computed(() => {
     return onlyAllowsImages.value ? props.texts!.selectImage : props.texts!.selectFile;
   });
@@ -33,20 +50,24 @@ export const useDropFiles = (props: DropFilesProps, emit: DropFilesEmits) => {
   const acceptFormats = computed(() => props.allowedFormats.join(', '));
 
   /**
-   * Abre a janela de seleção de arquivos
+   * Abre a janela de seleção de arquivos nos cenários permitidos, quando o componente
+   * não está desabilitado ou quando é permitido apenas um arquivo e não há arquivos
+   * selecionados.
    */
   const openFileDialog = () => {
-    const singleFile = !props.multiple;
+    const singleFile = !multiple.value;
     const notHasFiles = fileList.value.length === 0;
 
-    if (!props.disabled && singleFile && notHasFiles) {
+    if (props.disabled) return;
+
+    if ((singleFile && notHasFiles) || !singleFile) {
       fileInput.value?.click();
     }
   };
 
   const handleFileChange = (event: Event) => {
     const target = event.target as HTMLInputElement;
-    if (target.files && target.files.length > 0 && props.multiple) {
+    if (target.files && target.files.length > 0 && multiple.value) {
       Array.from(target.files).forEach(validateAndProcessFile);
 
       return;
@@ -64,7 +85,7 @@ export const useDropFiles = (props: DropFilesProps, emit: DropFilesEmits) => {
 
     if (!event.dataTransfer?.files || event.dataTransfer.files.length === 0) return;
 
-    if (props.multiple) {
+    if (multiple.value) {
       Array.from(event.dataTransfer.files).forEach(validateAndProcessFile);
 
       return;
@@ -78,7 +99,7 @@ export const useDropFiles = (props: DropFilesProps, emit: DropFilesEmits) => {
   });
 
   const handleCorruptedImage = (index: number) => {
-    fileList.value[index] = { ...fileList.value[index], preview: null, error: true };
+    fileList.value[index] = { ...fileList.value[index], error: true };
   };
 
   const handleCorruptedFile = (index: number) => {
@@ -93,9 +114,12 @@ export const useDropFiles = (props: DropFilesProps, emit: DropFilesEmits) => {
 
     if (!errorMessage) errorMessage = checkSizeError(props, file);
 
-    if (!props.multiple) fileList.value = [];
+    if (!multiple.value) fileList.value = [];
+
+    if (!file.type && !errorMessage) errorMessage = props.texts!.errors.readingFailure;
 
     const isImage = isImageByFile.value(file);
+
     if (!errorMessage && isImage) {
       const reader = new FileReader();
 
@@ -105,11 +129,15 @@ export const useDropFiles = (props: DropFilesProps, emit: DropFilesEmits) => {
         img.onload = () => {
           errorMessage = checkDimensionsError(props, img);
 
-          if (errorMessage) return;
+          if (errorMessage) {
+            uploadError.value = errorMessage;
+            return;
+          }
 
-          if (!props.multiple) fileList.value = [];
+          if (!multiple.value) fileList.value = [];
 
           filePreview = reader.result as string;
+
           fileList.value.push({ file, preview: filePreview, error: false });
 
           emit('update', { fileName: file.name, file });
@@ -120,27 +148,38 @@ export const useDropFiles = (props: DropFilesProps, emit: DropFilesEmits) => {
         img.src = reader.result as string;
       };
 
-      reader.onerror = () => (errorMessage = props.texts!.errors.readingFailure);
+      reader.onerror = () => {
+        uploadError.value = props.texts!.errors.readingFailure;
+
+        emit('update', { fileName: file.name, file: null });
+      };
 
       reader.readAsDataURL(file);
     } else if (!errorMessage) {
       const reader = new FileReader();
 
+      reader.onload = () => {
+        if (!reader.result) {
+          handleCorruptedFile(fileList.value.length);
+          return;
+        }
+
+        fileList.value.push({ file, preview: null, error: false });
+
+        emit('update', { fileName: file.name, file });
+      };
+
       reader.onerror = () => handleCorruptedFile(fileList.value.length);
 
       reader.readAsDataURL(file);
-
-      fileList.value.push({ file, preview: null, error: false });
-
-      emit('update', { fileName: file.name, file });
     }
 
-    if (!props.multiple) errorMessages.value = [];
+    if (!multiple.value) uploadError.value = null;
 
     if (errorMessage) {
-      errorMessages.value.push(errorMessage);
+      uploadError.value = errorMessage;
 
-      if (!props.multiple) fileList.value = [];
+      if (!multiple.value) fileList.value = [];
 
       emit('update', { fileName: file.name, file: null });
     }
@@ -155,7 +194,7 @@ export const useDropFiles = (props: DropFilesProps, emit: DropFilesEmits) => {
   };
 
   const deleteFile = (index: number) => {
-    const fileName = fileList.value[index]?.file.name ?? null;
+    const fileName = fileList.value[index]?.file?.name ?? null;
 
     fileList.value.splice(index, 1);
 
@@ -165,15 +204,17 @@ export const useDropFiles = (props: DropFilesProps, emit: DropFilesEmits) => {
   };
 
   return {
+    isPng,
     fileInput,
     fileList,
     acceptFormats,
-    errorMessages,
+    uploadError,
     isDragging,
     onlyAllowsImages,
     textSelect,
     icon,
     isImageByFile,
+    multiple,
     openFileDialog,
     handleFileChange,
     handleDrop,

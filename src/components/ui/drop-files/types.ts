@@ -4,12 +4,11 @@ export interface FileData {
   error: boolean;
 }
 
-export interface DropFilesButtonDelete extends Pick<DropFilesProps, 'disabled'> {}
-
 export interface DropFilesFileAndNameProps {
   data: FileData;
   corrupted?: boolean;
   type?: 'image' | 'file';
+  errors: DropFilesErrorsMessageProp;
 }
 
 export interface DropFilesErrorsMessageProp {
@@ -19,9 +18,14 @@ export interface DropFilesErrorsMessageProp {
   sizeExceeded: string;
   /** Texto para o erro de formato não suportado. Use o `{{format}}` para substituição automática do formato de imagem carregada. */
   invalidFormat: string;
+  /** Texto para o erro de arquivo vazio. */
   emptyFile: string;
+  /** Texto para o erro de nome de arquivo muito grande. */
   largeFileName: string;
+  /** Texto para o erro de falha ao ler o arquivo. */
   readingFailure: string;
+  /** Texto para o arquivo corrompido que não foi possível ler o nome. */
+  descriptionForCorruptedFile: string;
 }
 
 export interface DropFilesDimensionsProp {
@@ -29,39 +33,45 @@ export interface DropFilesDimensionsProp {
   height: number;
 }
 
+export interface DropFilesTextsProp {
+  selectImage: string;
+  selectFile: string;
+  clickOrientation: string;
+  dragOrientation: string;
+  errors: DropFilesErrorsMessageProp;
+}
+
 export interface DropFilesProps {
+  /** Rótulo principal do componente */
   label?: string;
-  showLabel?: boolean;
+  /** Breve descrição sobre as extensões e informações necessárias */
   subtitle?: string;
-  showSubtitle?: boolean;
   /**
-   * Para os formatos de arquivo permitidos, utilize a extensão do arquivo ou o MIME type.
+   * Defina os formatos de arquivos permitidos, utilize a extensão do arquivo ou o MIME
+   * type.
    */
   allowedFormats: string[];
-  maxFileSize?: number | null;
+  /** Tamanho máximo permitido para o arquivo em bytes. */
+  maxFileSize?: number;
   /**
    * Para travar as dimensões máximas permitidas para imagens.
    */
   maxDimensions?: DropFilesDimensionsProp | null;
+  /** Define o tamanho máximo do nome do arquivo. */
   maxFileNameLength?: number;
-  multiple?: boolean;
+  /** Desabilita o componente para upload de arquivos. */
   disabled?: boolean;
-  texts?: {
-    selectImage: string;
-    selectFile: string;
-    clickOrientation: string;
-    dragOrientation: string;
-    errors: DropFilesErrorsMessageProp;
-  };
+  /** Define todos os textos do componente, bem como as mensagens de erro a exibir. */
+  texts?: DropFilesTextsProp;
 }
 
-export interface DropFilesUploadPayload {
+export interface DropFilesUpdatePayload {
   fileName: string | null;
   file: File | null;
 }
 
 export interface DropFilesEmits {
-  (e: 'update', payload: DropFilesUploadPayload): void;
+  (e: 'update', payload: DropFilesUpdatePayload): void;
 }
 
 export interface DropFilesPreviewEmits {
