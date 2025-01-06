@@ -49,6 +49,10 @@ onUnmounted(() => {
             :variant="item.variant || 'default'"
             :label="getButtonLabel(item.label, item.leadingIcon)"
             :to="item.to"
+            :href="item.href"
+            :target="item.target"
+            :disabled="item.disabled"
+            :type="item.type"
             :leading-icon="item.leadingIcon"
             @click="item.onAction" />
         </template>
@@ -76,6 +80,10 @@ onUnmounted(() => {
           :label="getButtonLabel(primaryAction.label, primaryAction.leadingIcon)"
           :class="primaryAction.class"
           :leading-icon="primaryAction.leadingIcon"
+          :disabled="primaryAction.disabled"
+          :type="primaryAction.type"
+          :target="primaryAction.target"
+          :href="primaryAction.href"
           :size="isDesktop ? 'md' : 'lg'"
           @click="primaryAction.onAction" />
       </div>
