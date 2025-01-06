@@ -1,16 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
-import FeeedbackMessage from './FeedbackMessage.vue';
+import FeedbackMessage from './FeedbackMessage.vue';
 import { fn } from '@storybook/test';
 
-const meta: Meta<typeof FeeedbackMessage> = {
-  title: 'ui/FeeedbackMessage',
-  component: FeeedbackMessage,
+const meta: Meta<typeof FeedbackMessage> = {
+  title: 'ui/FeedbackMessage',
+  component: FeedbackMessage,
   render: (args) => ({
-    components: { FeeedbackMessage },
+    components: { FeedbackMessage },
     setup() {
       return { args };
     },
-    template: '<FeeedbackMessage v-bind="args" />',
+    template: '<FeedbackMessage v-bind="args" />',
   }),
   argTypes: {},
   parameters: {
