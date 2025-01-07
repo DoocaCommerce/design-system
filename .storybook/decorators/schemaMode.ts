@@ -6,6 +6,11 @@ const backgrounds = {
   light: '#F5F7FA',
 };
 
+const color = {
+  dark: '#e0e8f2',
+  light: '#293b50',
+};
+
 export const schema = {
   description: 'Theme',
   defaultValue: 'light',
@@ -21,16 +26,16 @@ export const schema = {
 
 /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
 export const schemaMode: DecoratorFunction<VueRenderer, { [x: string]: any }> = function (story, context) {
-  document.documentElement.setAttribute('data-theme', context.globals.scheme);
+  document.documentElement.setAttribute('data-theme', context.globals.schema);
 
-  const targetBg = document.querySelector<HTMLBodyElement>('.sb-show-main');
-
-  if (targetBg) {
-    targetBg.style.backgroundColor = backgrounds[context.globals.scheme];
-  }
+  document.querySelectorAll<HTMLBodyElement>('[data-story-block]').forEach((item) => {
+    item.style.backgroundColor = backgrounds[context.globals.schema];
+    item.style.color = color[context.globals.schema];
+  });
 
   document.querySelectorAll<HTMLDivElement>('.docs-story').forEach((item) => {
-    item.style.backgroundColor = backgrounds[context.globals.scheme];
+    item.style.backgroundColor = backgrounds[context.globals.schema];
+    item.style.color = color[context.globals.schema];
   });
 
   return {

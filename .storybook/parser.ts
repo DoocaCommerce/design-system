@@ -43,12 +43,21 @@ const parsePrimitives = (tokens) => {
  * Parse brand tokens
  * @param {any[]} tokens
  */
-const parseBrand = (tokens) => {
-  return tokens.reduce((result, token) => {
-    return {
-      ...result,
-      [sanitizeToken(token.name)]: typeof token.value === 'object' ? sanitizeToken(token.value.name) : token.value,
-    };
+const parseBrand = (collection) => {
+  return collection.reduce((brandsResult, items) => {
+    const brandTokens = items.variables.reduce((result, token) => {
+      return {
+        ...result,
+        [sanitizeToken(token.name)]: typeof token.value === 'object' ? sanitizeToken(token.value.name) : token.value,
+      };
+    }, {});
+
+    const result = { ...brandsResult };
+
+    const sanitizeName = items.name.replace(/[^a-zA-Z0-9-]/, '-');
+    result[sanitizeName] = brandTokens;
+
+    return result;
   }, {});
 };
 
@@ -62,7 +71,9 @@ const parseSemantics = (tokens: any[]) => {
       ...result,
       [sanitizeToken(token.name)]:
         typeof token.value === 'object'
-          ? parsedTokens[token.value.collection][sanitizeToken(token.value.name)]
+          ? token.value.collection === 'brand'
+            ? sanitizeToken(token.value.name)
+            : parsedTokens[token.value.collection][sanitizeToken(token.value.name)]
           : token.value,
     }),
     {}
@@ -93,7 +104,7 @@ const defineGroup = (token: string): string => {
  * @param {Record<string, any>} tokens
  * @returns Classified tokens
  */
-const classifyToken = (tokens: Record<string, any>) => {
+const classifyTokens = (tokens: Record<string, any>) => {
   const result = {};
 
   Object.entries(tokens).forEach(([key, value]) => {
@@ -116,7 +127,16 @@ const init = () => {
   const collections: any = {};
 
   tokens.collections.forEach((collection) => {
-    collections[collection.name.toLowerCase()] = collection.modes[0].variables;
+    const collectionName = collection.name.toLowerCase();
+
+    if (collectionName === 'brand') {
+      collections[collectionName] = [];
+      collection.modes.forEach((brandCollection) => {
+        collections[collectionName].push(brandCollection);
+      });
+    } else {
+      collections[collectionName] = collection.modes[0].variables;
+    }
   });
 
   if (!collections.primitives) {
@@ -134,9 +154,9 @@ const init = () => {
   parsedTokens.semantics = parseSemantics(collections.semantics);
 
   const classifiedTokens: ClassifiedTokens = {
-    primitives: classifyToken(parsedTokens.primitives),
-    brand: classifyToken(parsedTokens.brand),
-    semantics: classifyToken(parsedTokens.semantics),
+    primitives: classifyTokens(parsedTokens.primitives),
+    brand: parsedTokens.brand,
+    semantics: classifyTokens(parsedTokens.semantics),
   };
 
   try {

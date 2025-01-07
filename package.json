@@ -23,7 +23,7 @@
     "lint:prettier:all": "prettier . --check --log-level warn",
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build",
-    "storybook:tokens:parse": "tsx .storybook/parse.ts",
+    "storybook:tokens:parse": "tsx ./.storybook/parser.ts",
     "prepare": "husky"
   },
   "peerDependencies": {

@@ -127,16 +127,28 @@
     }
   },
   "brand": {
-    "color": {
+    "tray": {
       "--b-color-base": "--p-color-blue-600",
       "--b-color-dark": "--p-color-blue-1000",
       "--b-color-medium": "--p-color-blue-500",
-      "--b-color-light": "--p-color-blue-100"
+      "--b-color-light": "--p-color-blue-100",
+      "--b-logo": "tray",
+      "--b-font": "roboto"
     },
-    "logo": {
-      "--b-logo": "tray"
+    "bagy": {
+      "--b-color-base": "--p-color-pink-600",
+      "--b-color-dark": "--p-color-pink-1000",
+      "--b-color-medium": "--p-color-pink-500",
+      "--b-color-light": "--p-color-pink-100",
+      "--b-logo": "bagy",
+      "--b-font": "roboto"
     },
-    "font": {
+    "suite-commerce": {
+      "--b-color-base": "--p-color-neutral-600",
+      "--b-color-dark": "--p-color-neutral-1000",
+      "--b-color-medium": "--p-color-neutral-500",
+      "--b-color-light": "--p-color-neutral-100",
+      "--b-logo": "suite commerce",
       "--b-font": "roboto"
     }
   },
@@ -144,14 +156,14 @@
     "color": {
       "--s-color-background-default": "#F5F7FA",
       "--s-color-background-overlay": "#000000CC",
-      "--s-color-background-highlight": "--p-color-blue-600",
+      "--s-color-background-highlight": "--b-color-base",
       "--s-color-fill-default": "#FFFFFF",
       "--s-color-fill-default hover": "#E0E8F2",
       "--s-color-fill-default light": "#F5F7FA",
       "--s-color-fill-disable": "#E0E8F2",
-      "--s-color-fill-highlight": "--p-color-blue-600",
-      "--s-color-fill-highlight hover": "--p-color-blue-500",
-      "--s-color-fill-highlight light": "--p-color-blue-100",
+      "--s-color-fill-highlight": "--b-color-base",
+      "--s-color-fill-highlight hover": "--b-color-medium",
+      "--s-color-fill-highlight light": "--b-color-light",
       "--s-color-fill-success": "#10875C",
       "--s-color-fill-success hover": "#409F7D",
       "--s-color-fill-success light": "#E7F3EF",
@@ -163,7 +175,7 @@
       "--s-color-fill-critical light": "#FBECEC",
       "--s-color-border-default": "#C2CFDE",
       "--s-color-border-disable": "#A4B6CE",
-      "--s-color-border-highlight": "--p-color-blue-600",
+      "--s-color-border-highlight": "--b-color-base",
       "--s-color-border-success": "#10875C",
       "--s-color-border-warning": "#D97706",
       "--s-color-border-critical": "#D63F3F",
@@ -171,7 +183,7 @@
       "--s-color-content-light": "#446285",
       "--s-color-content-placeholder": "#C2CFDE",
       "--s-color-content-disable": "#A4B6CE",
-      "--s-color-content-highlight": "--p-color-blue-600",
+      "--s-color-content-highlight": "--b-color-base",
       "--s-color-content-success": "#10875C",
       "--s-color-content-warning": "#D97706",
       "--s-color-content-critical": "#D63F3F",
@@ -205,7 +217,7 @@
       "--s-spacing-huge": 64
     },
     "font": {
-      "--s-font-family": "roboto",
+      "--s-font-family": "--b-font",
       "--s-font-size-base": 14,
       "--s-font-size-25": 25,
       "--s-font-size-22": 22,
