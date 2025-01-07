@@ -3,13 +3,6 @@ import { completeOnlyImagesDropFiles } from './__mocks__/completeOnlyImagesDropF
 import DropFiles from './DropFiles.vue';
 import type { Meta, StoryObj } from '@storybook/vue3';
 
-/**
- * DropFiles é um componente para upload de arquivos ou imagens, permitindo que o usuário selecione ou arraste arquivos.
- *
- * Ideal para fluxos que exigem envio de imagens (ex.: produtos) ou documentos (ex.: contratos), com suporte configurável para formatos específicos e limite de tamanho.
- *
- * O componente suporta o envio de um único arquivo por vez, e algumas validações são configuráveis para garantir que o arquivo enviado atenda aos critérios definidos.
- */
 const meta: Meta<typeof DropFiles> = {
   title: 'ui/DropFiles',
   component: DropFiles,

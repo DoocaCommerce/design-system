@@ -1,9 +1,9 @@
 import { ref, computed, readonly } from 'vue';
 import { imageMimeTypes } from '../mimeTypes';
 import type { DropFilesEmits, DropFilesProps, FileData } from '../types';
-import { checkSizeError } from './validation/checkSizeError';
-import { checkFormatCompatibility } from './validation/checkFormatCompatibility';
-import { checkDimensionsError } from './validation/checkDimensionsError';
+import { checkSizeError } from './validators/checkSizeError';
+import { checkFormatCompatibility } from './validators/checkFormatCompatibility';
+import { checkDimensionsError } from './validators/checkDimensionsError';
 
 /**
  * Lógica para o componente de upload de arquivos.
@@ -119,7 +119,6 @@ export const useDropFiles = (props: DropFilesProps, emit: DropFilesEmits) => {
     if (!file.type && !errorMessage) errorMessage = props.texts!.errors.readingFailure;
 
     const isImage = isImageByFile.value(file);
-
     if (!errorMessage && isImage) {
       const reader = new FileReader();
 

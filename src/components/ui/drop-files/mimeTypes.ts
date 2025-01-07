@@ -15,6 +15,9 @@ export const imageMimeTypes: Record<string, string[]> = {
   'image/vnd.adobe.photoshop': ['.psd'],
   'image/vnd.dwg': ['.dwg'],
   'image/vnd.dxf': ['.dxf'],
+  'image/g3fax': ['.g3'],
+  'image/ief': ['.ief'],
+  'image/prs.btif': ['.btif'],
 };
 
 export const otherMimeTypes: Record<string, string[]> = {
@@ -91,6 +94,7 @@ export const otherMimeTypes: Record<string, string[]> = {
   'text/javascript': ['.js'],
   'video/3gpp': ['.3gp'],
   'video/3gpp2': ['.3g2'],
+  'audio/3gpp2': ['.3g2'],
   'video/mp2t': ['.ts'],
   'video/mpeg': ['.mpeg'],
   'video/ogg': ['.ogv'],

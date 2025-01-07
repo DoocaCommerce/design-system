@@ -21,7 +21,7 @@ const props = withDefaults(defineProps<DropFilesProps>(), {
       invalidFormat: 'O formato de arquivo {{format}} não é aceito.',
       emptyFile: 'O arquivo enviado não contém dados.',
       largeFileName: 'O nome do arquivo é muito longo. Renomeie e tente novamente.',
-      readingFailure: 'Não foi possível carregar o arquuivo.',
+      readingFailure: 'Não foi possível carregar o arquivo.',
       descriptionForCorruptedFile: 'Arquivo corrompido',
     },
   }),
@@ -63,7 +63,7 @@ defineOptions({
       class="drop-files-select"
       :class="{
         '-dragging': isDragging,
-        '-disabled': props.disabled,
+        '-disabled': disabled,
         '-error': uploadError,
         '-with-files': fileList.length > 0,
         '-transparent-bg': isPng,
@@ -85,7 +85,7 @@ defineOptions({
         hidden
         @change="handleFileChange" />
 
-      <template v-if="!fileList.length">
+      <template v-if="!fileList.length || uploadError">
         <Icon :name="icon" size="24" />
 
         <div class="drop-files-text" data-test-drop-files="empty">

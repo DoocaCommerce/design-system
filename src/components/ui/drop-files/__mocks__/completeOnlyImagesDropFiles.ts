@@ -6,8 +6,8 @@ export const completeOnlyImagesDropFiles: DropFilesProps = {
   allowedFormats: ['image/svg+xml', 'image/png', 'image/gif'],
   maxFileSize: size24MB,
   label: 'Imagem para o anúncio',
-  subtitle: 'SVG, PNG ou GIF com até 24MB com dimensões recomendadas de 600x600px',
-  maxDimensions: { width: 600, height: 600 },
+  subtitle: 'SVG, PNG ou GIF com até 24MB com dimensões recomendadas de 2000x2000px',
+  maxDimensions: { width: 2000, height: 2000 },
   maxFileNameLength: 10,
   disabled: false,
   texts: {

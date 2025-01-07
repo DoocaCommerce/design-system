@@ -44,7 +44,7 @@ export interface DropFilesTextsProp {
 export interface DropFilesProps {
   /** Rótulo principal do componente */
   label?: string;
-  /** Breve descrição sobre as extensões e informações necessárias */
+  /** Breve descrição sobre as extensões e informações necessárias sobre o arquivo permitido para upload */
   subtitle?: string;
   /**
    * Defina os formatos de arquivos permitidos, utilize a extensão do arquivo ou o MIME
@@ -71,10 +71,6 @@ export interface DropFilesUpdatePayload {
 }
 
 export interface DropFilesEmits {
+  /** Emite as atualizações de adição e exclusão de arquivos */
   (e: 'update', payload: DropFilesUpdatePayload): void;
-}
-
-export interface DropFilesPreviewEmits {
-  (e: 'remove'): void;
-  (e: 'corrupt-file-error'): void;
 }
