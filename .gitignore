@@ -25,6 +25,7 @@ out
 build
 dist
 dist-ssr
+dist-storybook
 
 # Logs
 logs
