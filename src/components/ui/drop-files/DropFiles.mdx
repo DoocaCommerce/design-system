@@ -20,6 +20,8 @@ Ideal para fluxos que exigem envio de imagens (ex.: produtos) ou documentos (ex.
 
 Esse componente possui uma prop `allowedFormats` que define os tipos de arquivos permitidos para upload, podendo usar a extensão do arquivo ou o MIME type do arquivo.
 
+Também é possível usar os formatos permitidos de forma mista com extensão e MIME type. Exemplo: `['.png', 'image/jpeg']`.
+
 > Apesar de permitir definir as extensões de arquivos, recomendamos usar apenas o MIME type para garantir que o arquivo seja validado corretamente já que a extensão do arquivo depende de compatibilidade da biblioteca.
 
 ### Uso com MIME type
@@ -28,7 +30,9 @@ Ao usar o MIME type é preciso definir todos os possíveis tipos que englobem os
 
 ### Uso com extensão
 
-O componente suporta um número limitado de extensões de arquivos, e que são validados de acordo com o MIME type do arquivo a partir dos formatos obtidos de um [banco de dados de tipos MIME](https://mimetype.io/all-types), porém apenas alguns formatos desse banco de dados são suportados. A lista na seção [Mime Types](#mime-types) lista os formatos suportados.
+Ao definir uma extensão como tipo permitido o componente valida se o MIME type existente no arquivo em carregamento para aquela determinada extensão é valido, se for inválido o arquivo é rejeitado. Por exemplo, para permitir imagens PNG, a prop `allowedFormats` pode ser definida como `['.png']`. Com uso de extensão garantimos os múltiplos tipos de MIME type que podem ser aceitos para aquela extensão, porém limitado ao suporte da biblioteca.
+
+O componente suporta um número limitado de extensões de arquivos, de alguns formatos obtidos a partir de um [banco de dados de tipos MIME da comunidade](https://mimetype.io/all-types). A lista na seção [Mime Types](#mime-types) lista os formatos atualmente suportados.
 
 > Ver o arquivo `src/components/ui/drop-files/mimeTypes.ts` do projeto para a lista mais atualizada de extensões suportadas.
 
