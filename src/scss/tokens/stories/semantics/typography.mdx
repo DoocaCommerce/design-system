@@ -1,0 +1,42 @@
+import { Meta, Story, Canvas } from '@storybook/blocks';
+import * as TokensStories from '../tokens.stories.ts';
+
+<Meta title="Design Tokens/Semântico/Tipografia" />
+
+# Tipografia
+Os tokens de tipografia definem um conjunto de diretrizes que configuram o comportamento 
+dos textos e como eles serão exibidos ao usuário final. São divididos em alguns grupos de
+modo que é possível criar diversas combinações simples, mas eficazes.
+<br/>
+
+### Família
+A família da fonte define o estilo principal, como se comporta, aspectos visuais, ligaduras,
+serifas, entre outras propriedades. A escolha da família de fonte pode mudar totalmente o
+modo como o usuário interage com o sistema.
+
+<Story of={TokensStories.semanticsTypographyFamily} />
+<br/>
+
+### Tamanho
+O tamanho da fonte possui, além de apelo chamativo, significado semântico. Textos maiores 
+tendem a indicar maior importância e precisam de mais atenção. Do mesmo modo, textos menores
+geralmente são usados para detalhes e mensagens com menor relevância.
+
+<Story of={TokensStories.semanticsTypographySize} />
+<br/>
+
+### Peso
+O peso da fonte permite que distinções sejam criadas dentro de uma mesma hierarquia ou
+semântica, induzindo o usuário a prestar mais atenção nesses elementos ou em outros.
+Possui função semelhante ao tamanho.
+
+<Story of={TokensStories.semanticsTypographyWeight} />
+<br/>
+
+### Altura da linha
+A altura da linha (`line-height`) define, como o próprio nome diz, a altura que uma 
+linha terá, modificando o comportamento padrão da família de fonte escolhida. Em alguns
+cenários, isso é desejado para melhor orquestrar os textos nos componentes, deixando-os 
+mais harmoniosos.
+
+<Story of={TokensStories.semanticsLineHeight} />

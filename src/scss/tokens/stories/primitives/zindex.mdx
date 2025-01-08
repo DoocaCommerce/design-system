@@ -1,0 +1,12 @@
+import { Meta, Story, Canvas } from '@storybook/blocks';
+import * as TokensStories from '../tokens.stories.ts';
+
+<Meta title="Design Tokens/Primitivo/Z-Index" />
+
+### Z-index
+Tokens Z-Index, ou tokens de dimensão de profundidade, são úteis quando existem 
+diversos elementos na interface interagindo e precisamos definir uma hierarquia
+entre eles. Elementos com o mesmo `z-index` têm a mesma hierarquia. Quanto maior
+o número, maior a hierarquia.
+
+<Story of={TokensStories.primitiveZIndex} />
