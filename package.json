@@ -1,10 +1,10 @@
 {
   "name": "@tray-tecnologia/design-system",
   "description": "Conjunto de diretrizes, componentes e padrões visuais e de código.",
-  "version": "4.0.0-rc.9",
+  "version": "4.0.0",
   "type": "module",
   "engines": {
-    "node": ">=20.10.0"
+    "node": ">=22.11.0"
   },
   "repository": {
     "type": "git",
