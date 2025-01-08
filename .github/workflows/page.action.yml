@@ -3,7 +3,6 @@ name: 'Publish Storybook'
 on:  
   release:
     types: [published]
-  pull_request:
 
 env:
   NODE_VERSION: 20.x
