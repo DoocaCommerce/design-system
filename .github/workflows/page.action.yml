@@ -1,9 +1,10 @@
 name: 'Publish Storybook'
 
-on:
+on:  
+  release:
+    types: [published]
   push:
-    branches:
-      - 'v4.x'
+    branches:   
       - 'feature/improve-scss'
 
 env:
