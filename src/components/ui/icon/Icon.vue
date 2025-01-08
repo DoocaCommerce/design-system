@@ -10,7 +10,7 @@ const props = withDefaults(defineProps<IconProps>(), {
 const isDSIcon = computed(() => !!props.name && (props.name as DSIconsType) in DSIcons);
 
 const iconStyleList = computed(() => {
-  let styles: StyleValue = {};
+  const styles: StyleValue = {};
 
   if (props.filled) {
     styles.fontVariationSettings = "'FILL' 1";

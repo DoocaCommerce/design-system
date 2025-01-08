@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import Page from './components/admin/page/Page.vue';
-import type { ActionButton } from './types/Action';
+import { Page } from '#ds/index';
+import type { ActionButton } from '#ds/index';
 
 const action: ActionButton = {
   label: 'Bagy',
