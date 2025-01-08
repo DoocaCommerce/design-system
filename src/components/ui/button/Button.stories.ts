@@ -121,7 +121,6 @@ export const withLargerIconAddedInSlot: Story = {
     template: `
       <Button v-bind="args">
         <Icon name="check" size="20" />
-        {{ args.label }}
       </Button>
     `,
   }),
