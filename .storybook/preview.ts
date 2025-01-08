@@ -12,6 +12,12 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
+    options: {
+      storySort: {
+        method: 'alphabetical',
+        order: ['Design Tokens', ['Primitivos', '*'], 'UI', 'Admin', 'Components'],
+      },
+    },
   },
   decorators: [schemaMode, brandMode],
   globalTypes: {
