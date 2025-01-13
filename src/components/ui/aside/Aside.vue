@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { watchEffect, ref, useSlots, computed } from 'vue';
+import { watchEffect, ref, computed } from 'vue';
 import Button from '../button/Button.vue';
 import IconButton from '../icon-button/IconButton.vue';
 import type { AsideProps } from './types';
@@ -7,14 +7,19 @@ import type { AsideProps } from './types';
 const emit = defineEmits(['update:modelValue', 'open', 'close', 'save']);
 const props = defineProps<AsideProps>();
 
-const slots = useSlots();
+type SlotType = {
+  default(): unknown;
+  footer(): unknown;
+};
+
+const slots = defineSlots<SlotType>();
 const isOpen = ref(false);
 const modalSize = computed(() => {
   return props.size ? `-${props.size}` : '-md';
 });
 
-const haveSlot = (name = 'default') => {
-  return !!slots[name as keyof typeof slots];
+const haveSlot = (name: keyof SlotType = 'default') => {
+  return !!slots[name];
 };
 
 const close = () => {
