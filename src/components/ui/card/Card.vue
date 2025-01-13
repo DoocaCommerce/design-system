@@ -47,7 +47,7 @@ const toggleShowBody = () => {
 
 onMounted(() => {
   isDropdown.value = props.dropdown;
-  showBody.value = props.dropdownClosed;
+  showBody.value = !props.dropdownClosed;
 });
 
 watchEffect(() => (showBody.value = !props.dropdownClosed));
@@ -87,11 +87,11 @@ watchEffect(() => (showBody.value = !props.dropdownClosed));
           </span>
         </div>
         <div class="ui-card-header-content-button">
-          <div v-if="actions">
+          <template v-if="actions">
             <Link v-for="item in actions" :key="item.label" @click="item.onAction">
               {{ item.label }}
             </Link>
-          </div>
+          </template>
           <slot v-if="haveSlot('header-button')" name="header-button" />
           <Button v-if="isDropdown" type="button" class="btn-collapse">
             <div v-if="showBody">
