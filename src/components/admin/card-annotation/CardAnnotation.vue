@@ -14,7 +14,7 @@ defineProps<CardAnnotationProps>();
 const slots = useSlots();
 
 const haveSlot = (name = 'default') => {
-  return !!slots[name];
+  return !!slots[name as keyof typeof slots];
 };
 </script>
 

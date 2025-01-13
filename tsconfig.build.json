@@ -1,0 +1,21 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
+  "include": ["env.d.ts", "src/**/*", "src/**/*.vue", "src/**/*.json"],
+  "exclude": [
+    "src/**/__tests__/*",
+    "src/scss/tokens/stories/**/*",
+    "src/App.vue",
+    "src/Page.vue",
+    "src/app.ts",
+    "src/routes.ts",
+    "src/**/*.stories.ts"
+  ],
+  "compilerOptions": {
+    "composite": true,
+    "noEmit": false,
+    "allowJs": true /* Need for Redactor. Buggy on typescript >= 5.7: https://github.com/microsoft/TypeScript/issues/60692 */,
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.build.tsbuildinfo",
+    "baseUrl": ".",
+    "outDir": "./dist/types"
+  }
+}

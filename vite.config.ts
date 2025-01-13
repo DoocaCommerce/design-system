@@ -1,23 +1,12 @@
+import { exit } from 'process';
 import { resolve, parse } from 'path';
 import { defineConfig } from 'vite';
+import { globSync } from 'glob';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
+import dts from 'vite-plugin-dts';
 import { libInjectCss } from 'vite-plugin-lib-inject-css';
-import { exit } from 'process';
-import { globSync } from 'glob';
-
-/**
- * Create a basic Vite plugin to solves bug where build script not ending process after complete bundle
- */
-function forceEnd() {
-  return {
-    name: 'force-end',
-
-    writeBundle: () => {
-      setTimeout(() => exit(0), 400);
-    },
-  };
-}
+import { copy } from './copy';
 
 /**
  * List all entry should be exported
@@ -40,7 +29,26 @@ const getEntries = (): Record<string, string> => {
 };
 
 export default defineConfig({
-  plugins: [vue(), vueJsx(), libInjectCss(), forceEnd()],
+  plugins: [
+    vue(),
+    vueJsx(),
+    libInjectCss(),
+    copy(['./src/scss'], '../scss'),
+    dts({
+      tsconfigPath: './tsconfig.build.json',
+      outDir: './dist/types',
+      cleanVueFileName: true,
+      beforeWriteFile: (filePath: string, content: string) => {
+        return {
+          filePath: filePath.replace('dist/types/src', 'dist/types'),
+          content,
+        };
+      },
+      afterBuild: () => {
+        setTimeout(() => exit(0), 300);
+      },
+    }),
+  ],
   css: {
     preprocessorOptions: {
       scss: {
@@ -49,6 +57,7 @@ export default defineConfig({
     },
   },
   build: {
+    outDir: 'dist/js',
     lib: {
       name: 'design-system',
       formats: ['es'],
@@ -56,7 +65,6 @@ export default defineConfig({
     },
     cssCodeSplit: true,
     copyPublicDir: false,
-    minify: false,
     rollupOptions: {
       external: ['vue', 'vue-router'],
       output: {

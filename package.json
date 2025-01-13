@@ -1,7 +1,7 @@
 {
   "name": "@tray-tecnologia/design-system",
   "description": "Conjunto de diretrizes, componentes e padrões visuais e de código.",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "type": "module",
   "engines": {
     "node": ">=22.11.0"
@@ -93,9 +93,10 @@
     "stylelint": "^16.10.0",
     "stylelint-config-standard": "^36.0.1",
     "tsx": "^4.19.1",
-    "typescript": "^5.5.4",
+    "typescript": "^5.6.3",
     "typescript-eslint": "^8.7.0",
     "vite": "5.4.5",
+    "vite-plugin-dts": "^4.5.0",
     "vite-plugin-lib-inject-css": "^2.1.1",
     "vitest": "^2.0.0",
     "vue": "^3.5.9",
@@ -115,20 +116,20 @@
   },
   "exports": {
     ".": {
-      "types": "./src/index.ts",
-      "default": "./dist/index.js"
+      "types": "./dist/types/index.d.ts",
+      "default": "./dist/js/index.js"
     },
     "./setup": {
-      "types": "./src/setup.ts",
-      "default": "./dist/setup.js"
+      "types": "./dist/types/setup.d.ts",
+      "default": "./dist/js/setup.js"
     },
     "./filters": {
-      "types": "./src/filters.ts",
-      "default": "./dist/filter.js"
+      "types": "./dist/types/filters.d.ts",
+      "default": "./dist/js/filter.js"
     },
     "./directives": {
-      "types": "./src/directives.ts",
-      "default": "./dist/directives.js"
+      "types": "./dist/types/directives.d.ts",
+      "default": "./dist/js/directives.js"
     },
     "./theme": "./src/scss/theme.scss"
   },

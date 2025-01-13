@@ -18,7 +18,7 @@ const uid = `ui-card-${getCurrentInstance()?.uid}`;
 const slots = useSlots();
 
 const haveSlot = (name = 'default') => {
-  return !!slots[name];
+  return !!slots[name as keyof typeof slots];
 };
 
 const toggleShowBody = () => {
@@ -72,9 +72,11 @@ watchEffect(() => (showBody.value = !props.dropdownClosed));
           </span>
         </div>
         <div class="ui-card-header-content-button">
-          <Link v-if="actions" v-for="item in actions" :key="item.label" @click="item.onAction">
-            {{ item.label }}
-          </Link>
+          <div v-if="actions">
+            <Link v-for="item in actions" :key="item.label" @click="item.onAction">
+              {{ item.label }}
+            </Link>
+          </div>
           <slot v-if="haveSlot('header-button')" name="header-button" />
           <Button v-if="isDropdown" type="button" class="btn-collapse">
             <div v-if="showBody">

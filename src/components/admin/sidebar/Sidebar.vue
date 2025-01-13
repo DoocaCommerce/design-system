@@ -17,7 +17,7 @@ const slots = useSlots();
 const menu = inject('menu') as MenuProviderInterface;
 defineProps<Props>();
 
-const haveSlot = (name = 'default') => !!slots[name];
+const haveSlot = (name = 'default') => !!slots[name as keyof typeof slots];
 
 const emit = defineEmits<{
   (evt: 'onClickItem', type: SideBarItemType, menuItem?: SideBarItem | SidebarMobileMenu): void;

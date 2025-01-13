@@ -32,7 +32,7 @@ const close = () => {
 };
 
 const haveSlot = (name: string) => {
-  return !!slots[name];
+  return !!slots[name as keyof typeof slots];
 };
 
 if (props.size) {
@@ -48,7 +48,7 @@ if (props.width) {
 }
 
 const listener = (e: KeyboardEvent) => {
-  if (e.key == 'Escape') {
+  if (e.key === 'Escape') {
     onClickBackdrop();
   }
 };
