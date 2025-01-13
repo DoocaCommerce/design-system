@@ -1,11 +1,17 @@
 <script setup lang="ts">
-import { getCurrentInstance, watchEffect, ref, useSlots, shallowRef } from 'vue';
+import { getCurrentInstance, watchEffect, ref, onMounted, shallowRef } from 'vue';
 import IconButton from '../icon-button/IconButton.vue';
 import type { ModalProps } from './types';
 
+type SlotType = {
+  caption(): unknown;
+  footer(): unknown;
+  default(): unknown;
+};
+
 const props = defineProps<ModalProps>();
 const emit = defineEmits(['update:modelValue', 'close', 'open']);
-const slots = useSlots();
+const slots = defineSlots<SlotType>();
 const showDialog = ref(false);
 const classList = ref<string[]>([]);
 const style = ref<{
@@ -17,11 +23,7 @@ const onClickBackdrop = () => {
   }
 };
 
-const uid = shallowRef(props.id);
-
-if (!props.id) {
-  uid.value = `modal-${getCurrentInstance()?.uid}`;
-}
+const uid = shallowRef('');
 
 const close = () => {
   showDialog.value = false;
@@ -31,7 +33,7 @@ const close = () => {
   }, 300);
 };
 
-const haveSlot = (name: string) => {
+const haveSlot = (name: keyof SlotType) => {
   return !!slots[name];
 };
 
@@ -48,10 +50,19 @@ if (props.width) {
 }
 
 const listener = (e: KeyboardEvent) => {
-  if (e.key == 'Escape') {
+  if (e.key === 'Escape') {
     onClickBackdrop();
   }
 };
+
+onMounted(() => {
+  if (!props.id) {
+    uid.value = `modal-${getCurrentInstance()?.uid}`;
+    return;
+  }
+
+  uid.value = props.id;
+});
 
 watchEffect(() => {
   if (props.modelValue) {

@@ -13,14 +13,16 @@ defineProps<CardAnnotationProps>();
 
 const slots = useSlots();
 
-const haveSlot = (name = 'default') => {
+type SlotType = keyof typeof slots;
+
+const haveSlot = (name: SlotType = 'default') => {
   return !!slots[name];
 };
 </script>
 
 <template>
   <div class="ui-card-annotation">
-    <h5 class="ui-card-annotation-title" v-if="title">{{ title }}</h5>
+    <h5 v-if="title" class="ui-card-annotation-title">{{ title }}</h5>
     <div class="ui-card-annotation-text">
       <slot />
     </div>

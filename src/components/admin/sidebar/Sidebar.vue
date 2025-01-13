@@ -13,11 +13,18 @@ export interface Props {
   mobileNavigationBar: SidebarMobileMenu[];
 }
 
-const slots = useSlots();
+type SlotType = {
+  logo(): unknown;
+  ['select-button'](): unknown;
+  ['top-content'](): unknown;
+  footer(): unknown;
+};
+
+const slots = defineSlots<SlotType>();
 const menu = inject('menu') as MenuProviderInterface;
 defineProps<Props>();
 
-const haveSlot = (name = 'default') => !!slots[name];
+const haveSlot = (name: keyof SlotType) => !!slots[name];
 
 const emit = defineEmits<{
   (evt: 'onClickItem', type: SideBarItemType, menuItem?: SideBarItem | SidebarMobileMenu): void;

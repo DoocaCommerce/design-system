@@ -1,10 +1,20 @@
 <script setup lang="ts">
-import { getCurrentInstance, ref, useSlots, watchEffect } from 'vue';
+import { getCurrentInstance, onMounted, ref, useSlots, watchEffect } from 'vue';
 import Icon from '../icon/Icon.vue';
 import Spinner from '../spinner/Spinner.vue';
 import Button from '../button/Button.vue';
 import Link from '../link/Link.vue';
 import type { CardProps } from './types';
+
+type SlotType = {
+  ['header-title'](): unknown;
+  ['header-button'](): unknown;
+  ['close-caption'](): unknown;
+  ['header-caption'](): unknown;
+  caption(): unknown;
+  footer(): unknown;
+  default(): unknown;
+};
 
 const emit = defineEmits(['toggleShowBody', 'open', 'close']);
 
@@ -12,12 +22,12 @@ const props = withDefaults(defineProps<CardProps>(), {
   dropdownClosed: false,
 });
 
-const isDropdown = ref(props.dropdown);
-const showBody = ref(!props.dropdownClosed);
+const isDropdown = ref(false);
+const showBody = ref(false);
 const uid = `ui-card-${getCurrentInstance()?.uid}`;
-const slots = useSlots();
+const slots = defineSlots<SlotType>();
 
-const haveSlot = (name = 'default') => {
+const haveSlot = (name: keyof SlotType) => {
   return !!slots[name];
 };
 
@@ -34,6 +44,11 @@ const toggleShowBody = () => {
 
   showBody.value = !showBody.value;
 };
+
+onMounted(() => {
+  isDropdown.value = props.dropdown;
+  showBody.value = !props.dropdownClosed;
+});
 
 watchEffect(() => (showBody.value = !props.dropdownClosed));
 </script>
@@ -72,9 +87,11 @@ watchEffect(() => (showBody.value = !props.dropdownClosed));
           </span>
         </div>
         <div class="ui-card-header-content-button">
-          <Link v-if="actions" v-for="item in actions" :key="item.label" @click="item.onAction">
-            {{ item.label }}
-          </Link>
+          <template v-if="actions">
+            <Link v-for="item in actions" :key="item.label" @click="item.onAction">
+              {{ item.label }}
+            </Link>
+          </template>
           <slot v-if="haveSlot('header-button')" name="header-button" />
           <Button v-if="isDropdown" type="button" class="btn-collapse">
             <div v-if="showBody">
