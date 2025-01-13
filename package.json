@@ -1,7 +1,7 @@
 {
   "name": "@tray-tecnologia/design-system",
   "description": "Conjunto de diretrizes, componentes e padrões visuais e de código.",
-  "version": "4.0.1",
+  "version": "4.0.1-alpha",
   "type": "module",
   "engines": {
     "node": ">=22.11.0"
@@ -131,10 +131,9 @@
       "types": "./dist/types/directives.d.ts",
       "default": "./dist/js/directives.js"
     },
-    "./theme": "./src/scss/theme.scss"
+    "./theme": "./dist/scss/theme.scss"
   },
   "files": [
-    "./dist",
-    "./src"
+    "./dist"
   ]
 }
