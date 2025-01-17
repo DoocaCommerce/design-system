@@ -162,7 +162,7 @@
   transition-property: transform, opacity;
   width: var(--s-spacing-x-large);
   text-align: center;
-  font-size: --s-spacing-x-small;
+  font-size: var(--s-spacing-x-small);
 
   &.-active {
     transform: translateX(-50%) scale(1);
