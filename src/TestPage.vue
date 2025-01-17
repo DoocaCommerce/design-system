@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Page } from '#ds/index';
+import { Page, TextStyle } from '#ds/index';
 import type { ActionButton } from '#ds/index';
 
 const action: ActionButton = {
