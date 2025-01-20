@@ -131,7 +131,12 @@ export interface ColsToShow {
 export interface IndexTableListProps<T> extends IndexTableEmptyResultDisplayProps {
   /** Lista de items a serem exibidos na tabela com o tipo de objeto que for desejado. Para que os dados sejam exibidos corretamente, é necessário que o objeto tenha as chaves correspondentes aos campos de `key` definidos na prop `fields`, se uma chave não corresponder a um `field` o dado não será exibido. */
   items: T[];
-  /** Define as colunas da tabela, e a ordem no array define a sequência de exibição na tabela. */
+  /**
+   * Cada item na lista de fields representa uma coluna da tabela, e a ordem no array
+   * define a sequência de exibição na tabela. Será gerada uma classe para cada coluna
+   * com o key da mesma que permite a personalização via css, esta classe terá o padrão
+   * `ui-index-table-list-head-{key}`.
+   */
   fields: KeyLabelDefault[];
   show?: ColsToShow;
   /** Usado para definir o valor do checkbox responsável por selecionar todos os itens. Quando `null` tem o aspecto indeterminate e quando `true` é exibido como checado */

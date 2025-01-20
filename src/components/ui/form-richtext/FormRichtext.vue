@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { computed, getCurrentInstance, onMounted, onUnmounted, watchEffect } from 'vue';
-import type { FormRichtextProps, TRedactor } from './types';
+import { computed, getCurrentInstance, onMounted, onUnmounted } from 'vue';
+import type { FormRichtextProps, RedactorLibraryType } from './';
 import Redactor from './redactor/redactor.usm';
 
 const props = withDefaults(defineProps<FormRichtextProps>(), {
@@ -9,9 +9,12 @@ const props = withDefaults(defineProps<FormRichtextProps>(), {
 
 const emit = defineEmits(['update:modelValue']);
 
-let redactor: TRedactor;
+const model = defineModel<string | number | readonly string[] | null | undefined>();
+
+let redactor: RedactorLibraryType;
 let focused = false;
 const uid = `ui-form-richtext-${getCurrentInstance()?.uid}`;
+
 const config = computed(() => {
   return Object.assign(
     {
@@ -55,16 +58,11 @@ onMounted(() => {
   redactor = Redactor(`#${uid}`, config.value);
 });
 
-watchEffect(() => {
-  const value = props.modelValue;
-  if (redactor && !focused) {
-    redactor.editor.source.setCode(value);
-  }
-});
-
 onUnmounted(() => {
   setTimeout(() => {
     Redactor(`#${uid}`, 'destroy');
+    redactor?.stop();
+
     redactor = null;
   }, 300);
 });
@@ -73,7 +71,8 @@ onUnmounted(() => {
 <template>
   <div class="ui-form-richtext">
     <label v-if="label" :for="name" class="form-control-label" @click="focus">{{ label }}</label>
-    <textarea :id="uid" :name="name" :placeholder="placeholder" :value="modelValue" />
+
+    <textarea :id="uid" v-model="model" :name="name" :placeholder="placeholder" />
   </div>
 </template>
 
