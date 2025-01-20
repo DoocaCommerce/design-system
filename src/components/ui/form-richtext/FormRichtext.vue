@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { computed, getCurrentInstance, onMounted, onUnmounted } from 'vue';
-import type { FormRichtextProps } from './types';
-import type { RedactorLibraryType } from './redactor/Redactor';
+import type { FormRichtextProps, RedactorLibraryType } from './';
 import Redactor from './redactor/redactor.usm';
 
 const props = withDefaults(defineProps<FormRichtextProps>(), {
