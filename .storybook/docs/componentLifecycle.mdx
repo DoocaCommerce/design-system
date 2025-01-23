@@ -1,0 +1,51 @@
+import { Meta, Title } from '@storybook/addon-docs';
+
+<Meta title="Começando/Ciclo de Vida dos Componentes" />
+
+# Ciclo de Vida dos Componentes
+
+Nesta seção, apresentamos o ciclo de vida dos componentes com base em práticas de outros design-sytems, mas seguindo uma linha mais simplificada e direta. O objetivo é esclarecer como e quando cada fase ocorre e facilitar a identificação do melhor momento para uso de cada componente.
+
+
+## Experimental
+
+O componente existe como uma prova de conceito ou é um trabalho em andamento. Geralmente este componente é lançado em uma Release Candidate (RC) para testes e feedback, de forma a garantir que ele funciona como esperado.
+
+- O componente pode estar pronto para uso preliminar dependendo de sua maturidade. Mas ainda não é recomendado para uso em produção.
+
+> **Indentificação**: marcado com a badge `Experimental` na documentação
+
+
+
+## Beta
+
+A fase Beta indica que o componente está em andamento ou pronto para uso exploratório, mas sujeito a mudanças significativas. O objetivo é testar o componente em diferentes cenários para garantir funcionalidade, acessibilidade e documentação adequadas.
+
+- Indicado para uso exploratório, como testes em produção com monitoramento atento.
+- Fundamental coletar opiniões dos desenvolvedores, designers e usuários para ajustes e melhorias.
+- O componente pode sofrer ajustes pontuais ou mudanças maiores antes de se tornar estável.
+- Podem haver lacunas na documentação e guias de uso.
+
+> **Indentificação**: possuem a badge `Beta` na documentação.
+
+
+
+## Stable
+
+O componente está livre de bugs conhecidos e funciona como esperado em alguns ambientes de produção. Ele está pronto para adoção completa, com suporte de longa duração esperado.
+
+- Estável e sem alterações drásticas até a próxima grande versão (se necessário)
+- Passou por testes de usabilidade
+
+> **Indentificação**: não possui badges na documentação.
+
+
+
+## Deprecated
+
+O componente será removido no futuro e deve ser evitado. E pode ou não haver planos de substituir sua funcionalidade por um novo componente.
+
+- A data de remoção pode ser anunciada a qualquer momento numa próxima versão `major` do pacote.
+
+> **Indentificação**: marcado com a badge `Deprecated` na documentação e exibe um aviso de obsolescência durante o uso.
+
