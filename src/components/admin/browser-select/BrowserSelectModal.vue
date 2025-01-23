@@ -5,7 +5,6 @@
 export default {};
 </script>
 
-
 <script setup lang="ts">
 import { ref, toRaw, watch, withDefaults } from 'vue';
 import FormTextfield from '../../ui/form-textfield/FormTextfield.vue';
@@ -100,7 +99,7 @@ watch(
   (newVal, oldVal) => {
     clearTimeout(timer);
 
-    if (newVal == null || oldVal == null) {
+    if (newVal === null || oldVal === null) {
       return;
     }
 
