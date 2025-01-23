@@ -5,14 +5,11 @@ import type { Meta, StoryObj } from '@storybook/vue3';
  * **Deprecated:** Este componente está depreciado e será removido em versões futuras.
  */
 const meta: Meta<typeof StatsGroup> = {
-  title: 'admin/⛔ StatsGroup',
+  title: 'admin/StatsGroup',
   component: StatsGroup,
-  tags: ['autodocs'],
+  tags: ['autodocs', 'deprecated'],
   args: {
-    infos: [
-      { text: 'Hello', value: 'valor' },
-      { text: 'Hello', value: 'valor' },
-    ],
+    infos: [{ label: '', text: 'Hello', value: 'valor' }],
   },
 };
 

@@ -1,5 +1,13 @@
 @import '../../../../scss/mixins.scss';
 
+.ui-table {
+  .ui-index-table-list-cell {
+    &.ui-table-cell {
+      padding: var(--s-spacing-nano) var(--s-spacing-x-small);
+    }
+  }
+}
+
 .ui-index-table {
   &-list {
     min-width: 100%;
@@ -11,9 +19,12 @@
     }
 
     &-all-items-checkbox {
-      padding-left: var(--s-spacing-x-small);
-      padding-right: var(--s-spacing-x-small);
+      padding: var(--s-spacing-nano) var(--s-spacing-x-small);
       width: 20px;
+    }
+
+    &-head-cell.ui-table-cell {
+      padding: var(--s-spacing-nano) var(--s-spacing-x-small);
     }
   }
 

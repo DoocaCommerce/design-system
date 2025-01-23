@@ -19,5 +19,5 @@ defineProps<TableProps>();
 </template>
 
 <style lang="scss">
-@import './Table.scss';
+@use 'Table';
 </style>

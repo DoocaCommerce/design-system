@@ -15,5 +15,5 @@ withDefaults(defineProps<IndexTableInternalLoaderProps>(), {
 </template>
 
 <style lang="scss">
-@import './IndexTableInternalLoader.scss';
+@use 'IndexTableInternalLoader';
 </style>

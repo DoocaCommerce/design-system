@@ -1,3 +1,10 @@
+<script lang="ts">
+/**
+ * @deprecated Este componente está depreciado e será removido em versões futuras.
+ */
+export default {};
+</script>
+
 <script setup lang="ts">
 import { ref, watch } from 'vue';
 import { chunk, cloneDeep, each, find, first, isArray } from 'lodash-es';

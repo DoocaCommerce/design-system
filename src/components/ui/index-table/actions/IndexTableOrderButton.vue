@@ -45,5 +45,5 @@ const onOrderBy = (key: string) => {
 </template>
 
 <style lang="scss" scoped>
-@import './IndexTableOrderButton.scss';
+@use 'IndexTableOrderButton';
 </style>

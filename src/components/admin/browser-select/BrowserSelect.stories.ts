@@ -19,6 +19,7 @@ const serviceFiltered = {
 
 const meta: Meta<typeof BrowserSelect> = {
   title: 'Components/BrowserSelect',
+  tags: ['deprecated'],
   component: BrowserSelect,
   args: {
     title: 'BrowserSelect title',

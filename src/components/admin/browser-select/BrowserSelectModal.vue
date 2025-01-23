@@ -1,3 +1,10 @@
+<script lang="ts">
+/**
+ * @deprecated Este componente está depreciado e será removido em versões futuras.
+ */
+export default {};
+</script>
+
 <script setup lang="ts">
 import { ref, toRaw, watch, withDefaults } from 'vue';
 import FormTextfield from '../../ui/form-textfield/FormTextfield.vue';
@@ -92,7 +99,7 @@ watch(
   (newVal, oldVal) => {
     clearTimeout(timer);
 
-    if (newVal == null || oldVal == null) {
+    if (newVal === null || oldVal === null) {
       return;
     }
 
@@ -196,5 +203,5 @@ defineExpose({
 </template>
 
 <style lang="scss">
-@import './BrowserSelectModal.scss';
+@use 'BrowserSelectModal';
 </style>

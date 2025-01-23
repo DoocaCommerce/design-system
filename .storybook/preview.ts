@@ -15,7 +15,8 @@ const preview: Preview = {
     options: {
       storySort: {
         method: 'alphabetical',
-        order: ['Design Tokens', ['Primitivos', '*'], 'UI', 'Admin', 'Components'],
+        includeName: true,
+        order: ['Começando', ['Introdução', '*'], 'Design Tokens', ['Primitivos', '*'], 'UI', 'Admin', 'Components'],
       },
     },
   },

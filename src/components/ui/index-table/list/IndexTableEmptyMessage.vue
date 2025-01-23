@@ -37,5 +37,5 @@ const onResetFilters = () => {
 </template>
 
 <style lang="scss" scoped>
-@import './IndexTableEmptyMessage.scss';
+@use 'IndexTableEmptyMessage';
 </style>

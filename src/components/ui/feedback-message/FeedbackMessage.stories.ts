@@ -4,6 +4,7 @@ import { fn } from '@storybook/test';
 
 const meta: Meta<typeof FeedbackMessage> = {
   title: 'ui/FeedbackMessage',
+  tags: ['beta'],
   component: FeedbackMessage,
   render: (args) => ({
     components: { FeedbackMessage },

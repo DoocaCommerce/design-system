@@ -8,9 +8,9 @@ import StatsItem from './StatsItem.vue';
  * **Deprecated:** Este componente está depreciado e será removido em versões futuras.
  */
 const meta = {
-  title: 'Ui/⛔ Stats Item',
+  title: 'Ui/Stats Item',
   component: StatsItem,
-  tags: ['autodocs'],
+  tags: ['deprecated'],
   args: {
     label: 'StatsItem label',
     value: 'R$ 10',

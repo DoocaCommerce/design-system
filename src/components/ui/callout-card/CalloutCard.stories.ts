@@ -6,9 +6,9 @@ import CalloutCard from './CalloutCard.vue';
  * **Deprecated:** Este componente está depreciado e será removido em versões futuras.
  */
 const meta: Meta<typeof CalloutCard> = {
-  title: 'Ui/⛔ Callout Card',
+  title: 'Ui/Callout Card',
   component: CalloutCard,
-  tags: ['autodocs'],
+  tags: ['deprecated'],
   args: {
     title: 'Callout card title',
     icon: 'house',

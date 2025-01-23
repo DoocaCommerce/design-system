@@ -202,5 +202,5 @@ watch(
 </template>
 
 <style lang="scss" scoped>
-@import './IndexTableActions.scss';
+@use 'IndexTableActions';
 </style>
