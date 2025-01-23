@@ -54,7 +54,7 @@ defineOptions({
 </script>
 
 <template>
-  <div class="drop-files" data-test-drop-files="main">
+  <div class="drop-files" data-test-drop-files="main" :class="$attrs.class">
     <label v-if="props.label" class="drop-files-label" data-test-drop-files="label">
       {{ props.label }}
     </label>
@@ -140,5 +140,5 @@ defineOptions({
 </template>
 
 <style lang="scss">
-@import 'DropFiles.scss';
+@use 'DropFiles';
 </style>

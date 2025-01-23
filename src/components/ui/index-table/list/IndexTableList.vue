@@ -102,7 +102,11 @@ watch(
           v-for="(cell, indexCell) in prepareKeysToCell(item)"
           :key="indexCell"
           :data-test-index-table="`cell-${cell.key}`"
-          :class="{ [`ui-index-table-list-cell-${formatKeyToClass(cell.key)}`]: true, ...(cellClass ?? {}) }">
+          :class="{
+            'ui-index-table-list-cell': true,
+            [`ui-index-table-list-cell-${formatKeyToClass(cell.key)}`]: true,
+            ...(cellClass ?? {}),
+          }">
           <slot v-if="slots[`cell(${cell.key})`]" :name="`cell(${cell.key})`" :item="item" :row="indexRow"></slot>
 
           <div v-else>{{ cell.value }}</div>
@@ -113,5 +117,5 @@ watch(
 </template>
 
 <style lang="scss" scoped>
-@import './IndexTableList.scss';
+@use 'IndexTableList';
 </style>

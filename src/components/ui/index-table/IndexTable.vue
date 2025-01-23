@@ -176,5 +176,5 @@ defineOptions({
 </template>
 
 <style lang="scss" scoped>
-@import './IndexTable.scss';
+@use 'IndexTable';
 </style>

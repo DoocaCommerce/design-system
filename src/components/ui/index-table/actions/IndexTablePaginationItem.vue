@@ -52,5 +52,5 @@ const onPreviousPage = () => {
 </template>
 
 <style lang="scss" scoped>
-@import './IndexTablePaginationItem.scss';
+@use 'IndexTablePaginationItem';
 </style>

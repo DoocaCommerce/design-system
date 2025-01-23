@@ -55,5 +55,5 @@ const onAction = () => emit('action');
 </template>
 
 <style lang="scss">
-@import './FeedbackMessage.scss';
+@use 'FeedbackMessage';
 </style>

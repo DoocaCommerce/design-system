@@ -50,5 +50,5 @@ watch(
 </template>
 
 <style lang="scss" scoped>
-@import './IndexTableTabs.scss';
+@use 'IndexTableTabs';
 </style>

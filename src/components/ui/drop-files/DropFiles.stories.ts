@@ -5,6 +5,7 @@ import type { Meta, StoryObj } from '@storybook/vue3';
 
 const meta: Meta<typeof DropFiles> = {
   title: 'ui/DropFiles',
+  tags: ['beta'],
   component: DropFiles,
   render: (args) =>
     ({
