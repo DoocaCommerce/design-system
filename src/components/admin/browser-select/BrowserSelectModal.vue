@@ -1,3 +1,11 @@
+<script lang="ts">
+/**
+ * @deprecated Este componente está depreciado e será removido em versões futuras.
+ */
+export default {};
+</script>
+
+
 <script setup lang="ts">
 import { ref, toRaw, watch, withDefaults } from 'vue';
 import FormTextfield from '../../ui/form-textfield/FormTextfield.vue';
@@ -196,5 +204,5 @@ defineExpose({
 </template>
 
 <style lang="scss">
-@import './BrowserSelectModal.scss';
+@use 'BrowserSelectModal';
 </style>

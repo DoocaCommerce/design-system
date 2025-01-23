@@ -35,5 +35,5 @@ watchEffect(() => {
 </template>
 
 <style lang="scss">
-@import './Tab.scss';
+@use 'Tab';
 </style>

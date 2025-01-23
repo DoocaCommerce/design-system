@@ -4,9 +4,9 @@ import ListGroupItem from './ListGroupItem.vue';
 import ListGroup from './ListGroup.vue';
 
 const meta = {
-  title: 'Ui/⛔ List Group',
+  title: 'Ui/List Group',
   component: ListGroup,
-  tags: ['autodocs'],
+  tags: ['deprecated'],
   args: {},
 } satisfies Meta<typeof ListGroup>;
 

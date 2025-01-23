@@ -3,9 +3,9 @@ import type { Meta, StoryObj } from '@storybook/vue3';
 import ProgressIndeterminate from './ProgressIndeterminate.vue';
 
 const meta: Meta<typeof ProgressIndeterminate> = {
-  title: 'Ui/⛔ Progress Indeterminate',
+  title: 'Ui/Progress Indeterminate',
   component: ProgressIndeterminate,
-  tags: ['autodocs'],
+  tags: ['deprecated'],
   args: {},
   argTypes: {},
 };

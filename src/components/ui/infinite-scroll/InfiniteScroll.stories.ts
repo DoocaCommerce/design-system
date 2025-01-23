@@ -5,7 +5,7 @@ import InfiniteScroll from './InfiniteScroll.vue';
 const meta = {
   title: 'Ui/Infinite Scroll',
   component: InfiniteScroll,
-  tags: ['autodocs'],
+  tags: ['deprecated'],
   args: {
     load: () => {
       return;

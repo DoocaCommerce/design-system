@@ -26,5 +26,5 @@ const emit = defineEmits<{
 </template>
 
 <style lang="scss" scoped>
-@import './SidebarMobile.scss';
+@use 'SidebarMobile';
 </style>

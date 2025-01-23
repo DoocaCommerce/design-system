@@ -7,9 +7,9 @@ import type { Meta, StoryObj } from '@storybook/vue3';
  * **Deprecated:** Este componente está depreciado e será removido em versões futuras. Use o Button com a propriedade `only-icon` no lugar.
  */
 const meta: Meta<typeof IconButton> = {
-  title: 'Ui/Button/⛔ IconButton',
+  title: 'Ui/Button/IconButton',
   component: IconButton,
-  tags: ['autodocs'],
+  tags: ['deprecated'],
   args: {
     icon: 'close',
     onColor: false,
