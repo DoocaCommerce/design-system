@@ -1,4 +1,4 @@
-import type { ConfigCallbacksRedactor, ConfigRedactor } from './redactor/Redactor';
+import type { ConfigCallbacksRedactor, ConfigRedactor } from './Redactor';
 
 export interface FormRichtextProps {
   /** Nome para a identificação na label do campo */

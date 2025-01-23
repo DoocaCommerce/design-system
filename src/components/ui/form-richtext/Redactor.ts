@@ -1,4 +1,4 @@
-export type AutosaveCallbackRedactor = (name: string, data: object, response: any) => void;
+export type AutosaveCallbackRedactor = (name: string, data: object, response: unknown) => void;
 
 export type ImageUploadCallbackRedactor = (formData: unknown, files: unknown[], event: Event) => string | object;
 
@@ -64,7 +64,7 @@ export type ConfigRedactor = {
   /** Esta configuração desativa a conversão padrão de URLs de vídeo (youtube/vimeo) e imagem em vídeos e imagens incorporados, e desativa a conversão automática de URLs de texto em links clicáveis. */
   autoparse: boolean;
   /** Permite outras configurações não identificadas/documentadas */
-  [key: string]: any;
+  [key: string]: unknown;
 };
 
 export interface RedactorPluginConfig {
@@ -75,7 +75,7 @@ export interface RedactorPluginConfig {
   /** Configura a execução do plugin */
   start: (app: unknown) => void;
   /** Permite outras configs não identificadas/documentadas */
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 export type RedactorLibraryType = {
@@ -106,5 +106,5 @@ export type RedactorLibraryType = {
     [pluginName: string]: unknown;
   };
   /** Permite outros métodos não identificados/documentados */
-  [key: string]: any;
+  [key: string]: unknown;
 } | null;
