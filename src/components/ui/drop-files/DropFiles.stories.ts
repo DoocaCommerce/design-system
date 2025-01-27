@@ -112,7 +112,9 @@ export const changeImages: Story = {
 
       return { args };
     },
-    template: templateDropFiles,
+    template:
+      templateDropFiles +
+      '<b style="display: block; margin-top: 20px; background: #a9a9a92b; border-radius: 30px; width: fit-content; padding: 10px;">Observe que a imagem será alterada em 3 segundos!</b>',
   }),
   args: {
     ...configWithImage,
@@ -148,11 +150,13 @@ export const withFileAndCustomClass: Story = {
 
       return { args };
     },
-    template: templateDropFiles,
+    template:
+      templateDropFiles +
+      '<b style="display: block; margin-top: 20px; background: #a9a9a92b; border-radius: 30px; width: fit-content; padding: 10px;">Nesse componente foi adicionado uma classe <code>-personalized-style</code> inspecione o código para visualizar</b>',
   }),
   args: {
     classes: {
-      'classe-adicionada-via-attrs': true,
+      '-personalized-style': true,
     },
     ...configWithFile,
     ...completeDropFilesActions,
