@@ -86,11 +86,29 @@ export const withImage: Story = {
         args.file = file;
       });
 
+      return { args };
+    },
+    template: templateDropFiles,
+  }),
+  args: {
+    ...configWithImage,
+    ...completeDropFilesActions,
+  },
+};
+
+export const changeImages: Story = {
+  render: (args: any) => ({
+    components: { DropFiles },
+    setup() {
+      createLocalFile(ImageTest).then((file: File) => {
+        args.file = file;
+      });
+
       setTimeout(() => {
         createLocalFile(DogImage).then((file: File) => {
           args.file = file;
         });
-      }, 10000);
+      }, 3000);
 
       return { args };
     },
