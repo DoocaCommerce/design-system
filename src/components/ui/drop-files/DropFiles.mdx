@@ -12,6 +12,8 @@ Ideal para fluxos que exigem envio de imagens (ex.: produtos) ou documentos (ex.
 
 > O componente suporta o envio de apenas **um arquivo** por vez.
 
+Ao usar qualquer atributo suportado pela tag `input` do tipo `file` elas serão repassadas para o componente de forma válida "porém prevalece as props configuradas no componente". O único atributo que não será repassado para o `input` interno é o `class` que é usado no elemento principal do componente "o que contém a classe `drop-files`", permitindo assim adicionar classes personalizadas ao mesmo.
+
 <Canvas of={DropFilesStories.completeOnlyImages} />
 
 <Canvas of={DropFilesStories.completeFiles} />
