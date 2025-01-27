@@ -68,7 +68,7 @@ export const useDropFiles = (props: DropFilesProps, emit: DropFilesEmits) => {
   const handleFileChange = (event: Event) => {
     const target = event.target as HTMLInputElement;
     if (target.files && target.files.length > 0 && multiple.value) {
-      Array.from(target.files).forEach(validateAndProcessFile);
+      Array.from(target.files).forEach((file) => validateAndProcessFile(file));
 
       return;
     }
@@ -86,7 +86,7 @@ export const useDropFiles = (props: DropFilesProps, emit: DropFilesEmits) => {
     if (!event.dataTransfer?.files || event.dataTransfer.files.length === 0) return;
 
     if (multiple.value) {
-      Array.from(event.dataTransfer.files).forEach(validateAndProcessFile);
+      Array.from(event.dataTransfer.files).forEach((file) => validateAndProcessFile(file));
 
       return;
     }
@@ -106,7 +106,7 @@ export const useDropFiles = (props: DropFilesProps, emit: DropFilesEmits) => {
     fileList.value[index] = { ...fileList.value[index], preview: null, error: true };
   };
 
-  const validateAndProcessFile = (file: File) => {
+  const validateAndProcessFile = (file: File, hasUpdate = true) => {
     let errorMessage = null;
     let filePreview = null;
 
@@ -139,7 +139,7 @@ export const useDropFiles = (props: DropFilesProps, emit: DropFilesEmits) => {
 
           fileList.value.push({ file, preview: filePreview, error: false });
 
-          emit('update', { fileName: file.name, file });
+          if (hasUpdate) emit('update', { fileName: file.name, file });
         };
 
         img.onerror = () => handleCorruptedImage(fileList.value.length);
@@ -165,7 +165,7 @@ export const useDropFiles = (props: DropFilesProps, emit: DropFilesEmits) => {
 
         fileList.value.push({ file, preview: null, error: false });
 
-        emit('update', { fileName: file.name, file });
+        if (hasUpdate) emit('update', { fileName: file.name, file });
       };
 
       reader.onerror = () => handleCorruptedFile(fileList.value.length);
@@ -182,6 +182,10 @@ export const useDropFiles = (props: DropFilesProps, emit: DropFilesEmits) => {
 
       emit('update', { fileName: file.name, file: null });
     }
+  };
+
+  const startFile = () => {
+    if (props.file) validateAndProcessFile(props.file, false);
   };
 
   const handleDragOver = () => {
@@ -221,5 +225,6 @@ export const useDropFiles = (props: DropFilesProps, emit: DropFilesEmits) => {
     handleDragOver,
     handleDragLeave,
     deleteFile,
+    startFile,
   };
 };

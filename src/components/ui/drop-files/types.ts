@@ -42,6 +42,8 @@ export interface DropFilesTextsProp {
 }
 
 export interface DropFilesProps {
+  /** Arquivo inicial a ser carregado. */
+  file?: File | null;
   /** Rótulo principal do componente */
   label?: string;
   /** Breve descrição sobre as extensões e informações necessárias sobre o arquivo permitido para upload */
