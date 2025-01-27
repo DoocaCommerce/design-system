@@ -1,11 +1,12 @@
 <script lang="ts" setup>
-import { defineProps, defineEmits } from 'vue';
+import { defineProps, defineEmits, watch, onMounted } from 'vue';
 import { Button, Icon } from '#ds/index';
 import { useDropFiles } from './composables/useDropFiles';
 import type { DropFilesEmits, DropFilesProps } from './types';
 import DropFilesFileAndName from './file-and-name/DropFilesFileAndName.vue';
 
 const props = withDefaults(defineProps<DropFilesProps>(), {
+  file: null,
   label: '',
   subtitle: '',
   disabled: false,
@@ -46,7 +47,11 @@ const {
   handleDragOver,
   handleDragLeave,
   deleteFile,
+  startFile,
 } = useDropFiles(props, emit);
+
+onMounted(startFile);
+watch(() => props.file, startFile);
 
 defineOptions({
   inheritAttrs: false,
