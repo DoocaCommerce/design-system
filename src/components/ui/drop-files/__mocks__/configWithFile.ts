@@ -3,7 +3,7 @@ import type { DropFilesProps } from '#ds/index';
 const size24MB = 24 * 1024 * 1024;
 
 export const configWithFile: DropFilesProps = {
-  allowedFormats: ['.txt'],
+  allowedFormats: ['text/plain'],
   maxFileSize: size24MB,
   label: 'Documento de texto para importar',
   subtitle: 'TXT com até 24MB',
