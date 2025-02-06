@@ -114,7 +114,11 @@ onMounted(() => {
 });
 
 watchPostEffect(() => {
-  if (pickr.value && props.modelValue != undefined && pickr.value.getColor().toHEXA().toString() != props.modelValue) {
+  if (
+    pickr.value &&
+    props.modelValue !== undefined &&
+    pickr.value.getColor().toHEXA().toString() !== props.modelValue
+  ) {
     pickr.value.setColor(props.modelValue);
   }
 
@@ -137,7 +141,7 @@ defineExpose({
   <label class="ui-colorpicker" :style="customStyle">
     <FormLabel class="ui-colorpicker" :label="label" @click="pickr.show()" />
     <div class="ui-colorpicker-content">
-      <div class="pickr" :id="uid"></div>
+      <div :id="uid" class="pickr"></div>
       <input
         v-if="withInput"
         class="form-control"
