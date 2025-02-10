@@ -5,10 +5,10 @@ import DropFiles from './DropFiles.vue';
 import type { Meta, StoryObj } from '@storybook/vue3';
 import ImageTest from './__mocks__/image-drop-files-test.jpg';
 import DogImage from './__mocks__/dog-drop-files-test.jpg';
-import ExampleText from './__mocks__/example.txt';
 import { createLocalFile } from './__mocks__/createLocalFile';
 import { completeDropFilesActions } from './__mocks__/completeDropFilesActions';
 import { configWithFile } from './__mocks__/configWithFile';
+import { createMockFile } from './__mocks__/createMockFile';
 
 const templateDropFiles = /* html */ `
 <div style="max-width: 400px;">
@@ -126,9 +126,8 @@ export const withFile: Story = {
   render: (args: any) => ({
     components: { DropFiles },
     setup() {
-      createLocalFile(ExampleText).then((file: File) => {
-        args.file = file;
-      });
+      const file = createMockFile({ name: 'example.txt', size: 1024, type: 'text/plain' });
+      args.file = file;
 
       return { args };
     },
@@ -144,9 +143,8 @@ export const withFileAndCustomClass: Story = {
   render: (args: any) => ({
     components: { DropFiles },
     setup() {
-      createLocalFile(ExampleText).then((file: File) => {
-        args.file = file;
-      });
+      const file = createMockFile({ name: 'example.txt', size: 1024, type: 'text/plain' });
+      args.file = file;
 
       return { args };
     },

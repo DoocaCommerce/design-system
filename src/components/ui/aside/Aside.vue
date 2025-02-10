@@ -54,8 +54,10 @@ const listener = (e: { key: string }) => {
 
 watchEffect(() => {
   if (props.modelValue) {
+    document.body.classList.add('aside-body-overflow');
     open();
   } else {
+    document.body.classList.remove('aside-body-overflow');
     close();
   }
 });

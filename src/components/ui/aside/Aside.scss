@@ -1,5 +1,9 @@
 @import '../../../scss/mixins.scss';
 
+.aside-body-overflow {
+  overflow: hidden;
+}
+
 .ui-aside {
   position: fixed;
   z-index: var(--s-index-very-high);
