@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { defineProps, defineEmits, watch, onMounted } from 'vue';
+import { defineProps, defineEmits, watch } from 'vue';
 import { Button, Icon } from '#ds/index';
 import { useDropFiles } from './composables/useDropFiles';
 import type { DropFilesEmits, DropFilesProps } from './types';
@@ -50,7 +50,6 @@ const {
   startFile,
 } = useDropFiles(props, emit);
 
-onMounted(startFile);
 watch(() => props.file, startFile);
 
 defineOptions({

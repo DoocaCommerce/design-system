@@ -105,16 +105,20 @@ export const changeImages: Story = {
       });
 
       setTimeout(() => {
+        args.file = null;
+      }, 3000);
+
+      setTimeout(() => {
         createLocalFile(DogImage).then((file: File) => {
           args.file = file;
         });
-      }, 3000);
+      }, 6000);
 
       return { args };
     },
     template:
       templateDropFiles +
-      '<b style="display: block; margin-top: 20px; background: #a9a9a92b; border-radius: 30px; width: fit-content; padding: 10px;">Observe que a imagem será alterada em 3 segundos!</b>',
+      '<b style="display: block; margin-top: 20px; background: #a9a9a92b; border-radius: 30px; width: fit-content; padding: 10px;">Observe que a imagem será removida em 3 segundos e alterada em 6 segundos!</b>',
   }),
   args: {
     ...configWithImage,

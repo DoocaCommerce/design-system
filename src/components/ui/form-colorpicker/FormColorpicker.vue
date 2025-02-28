@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { getCurrentInstance, onMounted, ref, shallowRef, watchPostEffect } from 'vue';
+import { getCurrentInstance, onMounted, onUnmounted, ref, shallowRef, watchPostEffect } from 'vue';
 import Pickr from '@simonwep/pickr';
 import type PickerInterface from '@simonwep/pickr';
 import '@simonwep/pickr/dist/themes/monolith.min.css';
@@ -111,6 +111,12 @@ onMounted(() => {
       if (!focused.value) update(hexa);
     }
   });
+});
+
+onUnmounted(() => {
+  if (pickr.value) {
+    pickr.value.destroyAndRemove();
+  }
 });
 
 watchPostEffect(() => {

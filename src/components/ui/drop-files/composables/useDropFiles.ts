@@ -185,7 +185,12 @@ export const useDropFiles = (props: DropFilesProps, emit: DropFilesEmits) => {
   };
 
   const startFile = () => {
-    if (props.file) validateAndProcessFile(props.file, false);
+    if (props.file) {
+      validateAndProcessFile(props.file, true);
+      return;
+    }
+
+    deleteFile(0);
   };
 
   const handleDragOver = () => {
