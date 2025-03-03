@@ -62,7 +62,9 @@ const setup = (overrides: Partial<DropFilesProps> = {}, mockReturns: MockReturns
     vi.mocked(checkDimensionsError).mockReturnValue(mockReturns.checkDimensionsError);
   }
 
-  return { props, emit, ...useDropFiles(props, emit) };
+  const dropFiles = useDropFiles(props, emit);
+
+  return { props, emit, ...dropFiles };
 };
 
 const mockEvent = (file: File) => ({ target: { files: [file] } }) as unknown as Event;
@@ -366,6 +368,35 @@ describe('useDropFiles', () => {
 
       deleteFile(0);
 
+      expect(emit).toHaveBeenCalledWith('update', { fileName: null, file: null });
+    });
+  });
+
+  describe('startFile', () => {
+    test('Dado que não exista um arquivo nas props, Quando startFile for chamado sem parâmetro, Então deve chamar deleteFile', () => {
+      const { startFile, emit, fileList } = setup();
+
+      startFile();
+
+      expect(fileList.value).toHaveLength(0);
+      expect(emit).toHaveBeenCalledWith('update', { fileName: null, file: null });
+    });
+
+    test('Dado que não exista um arquivo nas props, Quando startFile for chamado com parâmetro false, Então não deve chamar deleteFile', () => {
+      const { startFile, emit, fileList } = setup();
+
+      startFile(false);
+
+      expect(fileList.value).toHaveLength(0);
+      expect(emit).not.toHaveBeenCalledWith('update', { fileName: null, file: null });
+    });
+
+    test('Dado que não exista um arquivo nas props, Quando startFile for chamado com parâmetro true, Então deve chamar deleteFile', () => {
+      const { startFile, emit, fileList } = setup();
+
+      startFile(true);
+
+      expect(fileList.value).toHaveLength(0);
       expect(emit).toHaveBeenCalledWith('update', { fileName: null, file: null });
     });
   });
