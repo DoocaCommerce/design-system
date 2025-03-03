@@ -9,7 +9,9 @@ const emit = defineEmits(['update:modelValue', 'open', 'close', 'update']);
 const Plugin = Choices.default || Choices;
 const props = withDefaults(defineProps<FormAutocompleteProps>(), {
   placeholder: 'Selecione',
-  config: () => ({}),
+  config: () => ({
+    searchResultLimit: 20,
+  }),
   options: () => [],
   position: 'bottom',
   size: 'md',
@@ -41,7 +43,6 @@ const settings = computed(() => {
     items: [],
     choices: _choices,
     allowHTML: false,
-    searchResultLimit: 20,
     options: [],
     ...props.config,
   };
