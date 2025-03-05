@@ -143,6 +143,33 @@ export const withFile: Story = {
   },
 };
 
+export const withFileUnmountedAndMounted: Story = {
+  render: (args: any) => ({
+    components: { DropFiles },
+    setup() {
+      const file = createMockFile({ name: 'example.txt', size: 1024, type: 'text/plain' });
+      args.file = file;
+
+      args.visible = true;
+
+      setTimeout(() => {
+        args.visible = false;
+      }, 500);
+
+      setTimeout(() => {
+        args.visible = true;
+      }, 800);
+
+      return { args };
+    },
+    template: `<div v-if="args.visible"> ${templateDropFiles}</div>`,
+  }),
+  args: {
+    ...configWithFile,
+    ...completeDropFilesActions,
+  },
+};
+
 export const withFileAndCustomClass: Story = {
   render: (args: any) => ({
     components: { DropFiles },

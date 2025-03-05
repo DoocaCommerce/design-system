@@ -184,13 +184,13 @@ export const useDropFiles = (props: DropFilesProps, emit: DropFilesEmits) => {
     }
   };
 
-  const startFile = () => {
+  const startFile = (withUpdate: boolean = true) => {
     if (props.file) {
-      validateAndProcessFile(props.file, true);
+      validateAndProcessFile(props.file, withUpdate);
       return;
     }
 
-    deleteFile(0);
+    deleteFile(0, withUpdate);
   };
 
   const handleDragOver = () => {
@@ -201,14 +201,14 @@ export const useDropFiles = (props: DropFilesProps, emit: DropFilesEmits) => {
     if (!props.disabled) isDragging.value = false;
   };
 
-  const deleteFile = (index: number) => {
+  const deleteFile = (index: number, withUpdate: boolean = true) => {
     const fileName = fileList.value[index]?.file?.name ?? null;
 
     fileList.value.splice(index, 1);
 
     if (fileInput.value) fileInput.value.value = '';
 
-    emit('update', { fileName, file: null });
+    if (withUpdate) emit('update', { fileName, file: null });
   };
 
   return {
