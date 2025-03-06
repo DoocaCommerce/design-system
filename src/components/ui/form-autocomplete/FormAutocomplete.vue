@@ -28,8 +28,9 @@ const emit = defineEmits(['update:modelValue', 'open', 'close', 'update'])
 const Plugin = Choices.default || Choices
 const props = withDefaults(defineProps<Props>(), {
 	placeholder: 'Selecione',
-	searchResultLimit: 20,
-	config: () => ({}),
+	config: () => ({
+		searchResultLimit: 20
+	}),
 	options: () => [],
 	position: 'bottom',
 	size: 'md'
@@ -61,7 +62,6 @@ const settings = computed(() => {
 		items: [],
 		choices: _choices,
 		allowHTML: false,
-		searchResultLimit: props.searchResultLimit,
 		options: [],
 		...props.config
 	}
