@@ -6,8 +6,8 @@ import FormLabel from '../form-label/FormLabel.vue'
 import type { Size } from '../../../types'
 
 interface AutocompleteOption {
-  label: string
-  value:  string | number
+	label: string
+	value: string | number
 }
 
 export interface Props {
@@ -21,16 +21,19 @@ export interface Props {
 	position?: 'top' | 'bottom' | 'auto'
 	config?: Record<string, any>
 	required?: boolean
+	searchResultLimit?: number
 }
 
 const emit = defineEmits(['update:modelValue', 'open', 'close', 'update'])
 const Plugin = Choices.default || Choices
 const props = withDefaults(defineProps<Props>(), {
 	placeholder: 'Selecione',
-	config: () => ({}),
+	config: () => ({
+		searchResultLimit: 20
+	}),
 	options: () => [],
 	position: 'bottom',
-  size: 'md',
+	size: 'md'
 })
 
 const uid = `ui-form-select-${getCurrentInstance()?.uid}`
@@ -59,7 +62,6 @@ const settings = computed(() => {
 		items: [],
 		choices: _choices,
 		allowHTML: false,
-		searchResultLimit: 20,
 		options: [],
 		...props.config
 	}
@@ -70,8 +72,8 @@ const settings = computed(() => {
 				choice: ({ classNames }: any, data: any) => {
 					return template(`
 						<div class="${classNames.item} ${classNames.itemChoice} ${
-						data.disabled ? classNames.itemDisabled : classNames.itemSelectable
-					}"
+							data.disabled ? classNames.itemDisabled : classNames.itemSelectable
+						}"
 						data-select-text="${this.config.itemSelectText}"
 						data-choice ${data.disabled ? 'data-choice-disabled aria-disabled="true"' : 'data-choice-selectable'}
 						data-id="${data.id}"
